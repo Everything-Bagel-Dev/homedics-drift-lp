@@ -902,6 +902,17 @@ body { margin: 0; padding: 0; }
   color: #FFFFFF;
 }
 
+.drift-gifting__item-compare {
+  color: var(--drift-mid-gray);
+  font-weight: 400;
+  text-decoration: line-through;
+}
+
+.drift-gifting__item-sale {
+  color: var(--drift-sale-red);
+  font-weight: 700;
+}
+
 /* ============================================================
    SECTION 7: FINAL CTA
    ============================================================ */
@@ -1240,7 +1251,7 @@ body { margin: 0; padding: 0; }
             <!-- Strikethrough original + sale price (bold red) per Jeff feedback -->
             <div class="drift-product-card__pricing">
               <span class="drift-product-card__price-compare">$399.99</span>
-              <span class="drift-product-card__price drift-product-card__price--sale">Sale Price</span>
+              <span class="drift-product-card__price drift-product-card__price--sale">$299.99</span>
             </div>
             <a href="/products/drift-16" class="drift-btn drift-btn--dark drift-btn--full">Shop Drift 16"</a>
           </div>
@@ -1270,7 +1281,7 @@ body { margin: 0; padding: 0; }
             <!-- Strikethrough original + sale price (bold red) per Jeff feedback -->
             <div class="drift-product-card__pricing">
               <span class="drift-product-card__price-compare">$499.99</span>
-              <span class="drift-product-card__price drift-product-card__price--sale">Sale Price</span>
+              <span class="drift-product-card__price drift-product-card__price--sale">$374.99</span>
             </div>
             <a href="/products/drift-21" class="drift-btn drift-btn--dark drift-btn--full">Shop Drift 21"</a>
           </div>
@@ -1423,14 +1434,14 @@ body { margin: 0; padding: 0; }
               <p class="drift-gifting__item-name">Drift 16"</p>
               <p class="drift-gifting__item-desc">For the home she loves</p>
             </div>
-            <span class="drift-gifting__item-badge drift-gifting__item-badge--sale">On Sale</span>
+            <span class="drift-gifting__item-badge"><del class="drift-gifting__item-compare">$399.99</del> <strong class="drift-gifting__item-sale">$299.99</strong></span>
           </div>
           <div class="drift-gifting__item">
             <div class="drift-gifting__item-info">
               <p class="drift-gifting__item-name">Drift 21"</p>
               <p class="drift-gifting__item-desc">For the mom who deserves the room</p>
             </div>
-            <span class="drift-gifting__item-badge drift-gifting__item-badge--sale">On Sale</span>
+            <span class="drift-gifting__item-badge"><del class="drift-gifting__item-compare">$499.99</del> <strong class="drift-gifting__item-sale">$374.99</strong></span>
           </div>
         </div>
         <a href="/pages/drift" class="drift-btn drift-btn--dark">Shop Mother's Day Gifts</a>

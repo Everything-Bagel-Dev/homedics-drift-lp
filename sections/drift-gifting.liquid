@@ -87,8 +87,11 @@
             <div class="drift-gifting__item-name">{{ section.settings.item_2_name }}</div>
             <div class="drift-gifting__item-desc">{{ section.settings.item_2_desc }}</div>
           </div>
-          <span class="drift-gifting__item-badge drift-gifting__item-badge--sale">
-            {{ section.settings.item_2_badge }}
+          <span class="drift-gifting__item-badge">
+            {%- if section.settings.item_2_compare_price != blank %}
+              <del class="drift-gifting__item-compare">{{ section.settings.item_2_compare_price }}</del>
+            {%- endif %}
+            <strong class="drift-gifting__item-sale">{{ section.settings.item_2_sale_price }}</strong>
           </span>
         </div>
 
@@ -98,8 +101,11 @@
             <div class="drift-gifting__item-name">{{ section.settings.item_3_name }}</div>
             <div class="drift-gifting__item-desc">{{ section.settings.item_3_desc }}</div>
           </div>
-          <span class="drift-gifting__item-badge drift-gifting__item-badge--sale">
-            {{ section.settings.item_3_badge }}
+          <span class="drift-gifting__item-badge">
+            {%- if section.settings.item_3_compare_price != blank %}
+              <del class="drift-gifting__item-compare">{{ section.settings.item_3_compare_price }}</del>
+            {%- endif %}
+            <strong class="drift-gifting__item-sale">{{ section.settings.item_3_sale_price }}</strong>
           </span>
         </div>
 
@@ -199,9 +205,15 @@
     },
     {
       "type": "text",
-      "id": "item_2_badge",
-      "label": "Badge text",
-      "default": "On Sale"
+      "id": "item_2_compare_price",
+      "label": "Compare at price",
+      "default": "$399.99"
+    },
+    {
+      "type": "text",
+      "id": "item_2_sale_price",
+      "label": "Sale price",
+      "default": "$299.99"
     },
     {
       "type": "header",
@@ -221,9 +233,15 @@
     },
     {
       "type": "text",
-      "id": "item_3_badge",
-      "label": "Badge text",
-      "default": "On Sale"
+      "id": "item_3_compare_price",
+      "label": "Compare at price",
+      "default": "$499.99"
+    },
+    {
+      "type": "text",
+      "id": "item_3_sale_price",
+      "label": "Sale price",
+      "default": "$374.99"
     },
     {
       "type": "header",

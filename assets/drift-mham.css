@@ -980,6 +980,17 @@
   color: #FFFFFF;
 }
 
+.drift-gifting__item-compare {
+  color: var(--drift-mid-gray);
+  font-weight: 400;
+  text-decoration: line-through;
+}
+
+.drift-gifting__item-sale {
+  color: var(--drift-sale-red);
+  font-weight: 700;
+}
+
 /* ============================================================
    SECTION 7: FINAL CTA
    ============================================================ */
