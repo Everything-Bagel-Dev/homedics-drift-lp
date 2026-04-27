@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drift × Mental Health Awareness Month 2026 — Homedics</title>
+  <meta name="description" content="Drift is the app-controlled ambient light clinically recognized for reducing stress, deepening calm, and turning any room into a place your mind can rest.">
+  <style>
+/**
+ * drift-mham.css
+ * Homedics Drift × Mental Health Awareness Month 2026
+ * Campaign: "Your Good Day Starts Here"
+ * Built by: Everything Bagel Partners / Jarvis
+ */
+
+/* ============================================================
+   CSS CUSTOM PROPERTIES — DESIGN TOKENS
+   ============================================================ */
+:root {
+  --drift-midnight:   #0D0D12;
+  --drift-deep-navy:  #0C1B2E;
+  --drift-linen:      #FAF8F4;
+  --drift-warm-white: #FFFFFF;
+  --drift-charcoal:   #1A1A1A;
+  --drift-mid-gray:   #4A4A4A;
+  --drift-mha-green:  #1D8A4C;
+  --drift-sale-red:   #D93025;
+  --drift-card-dark:  #1C1C24;
+  --drift-border:     rgba(255, 255, 255, 0.08);
+  --drift-off-white:  #E8E6E0;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-serif: Georgia, 'Times New Roman', Times, serif;
+  --section-padding-desktop: 96px 48px;
+  --section-padding-mobile:  64px 24px;
+  --container-max:           1200px;
+  --transition-standard: 0.3s ease;
+  --transition-slow:     0.6s ease;
+  --radius-pill:  100px;
+  --radius-card:  16px;
+  --radius-btn:   8px;
+}
+
+/* ============================================================
+   RESET / BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; padding: 0; }
+
+.drift-lp {
+  font-family: var(--font-sans);
+  color: var(--drift-charcoal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.drift-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  width: 100%;
+}
+
+.drift-eyebrow {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--drift-mha-green);
+  margin: 0 0 16px;
+  display: block;
+}
+
+.drift-eyebrow--light {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.drift-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 32px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  border-radius: var(--radius-btn);
+  min-height: 48px;
+  cursor: pointer;
+  transition: all var(--transition-standard);
+  border: 2px solid transparent;
+  white-space: nowrap;
+}
+.drift-btn--primary {
+  background: #FFFFFF;
+  color: var(--drift-midnight);
+  border-color: #FFFFFF;
+}
+.drift-btn--primary:hover {
+  background: var(--drift-off-white);
+  border-color: var(--drift-off-white);
+  transform: translateY(-1px);
+}
+.drift-btn--secondary {
+  background: transparent;
+  color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+.drift-btn--secondary:hover {
+  border-color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.08);
+}
+.drift-btn--dark {
+  background: var(--drift-midnight);
+  color: #FFFFFF;
+  border-color: var(--drift-midnight);
+}
+.drift-btn--dark:hover {
+  background: var(--drift-deep-navy);
+  transform: translateY(-1px);
+}
+
+/* ============================================================
+   SECTION 1: HERO
+   ============================================================ */
+.drift-hero {
+  background-color: var(--drift-midnight);
+  min-height: 100vh;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.drift-hero__badge-bar {
+  width: 100%;
+  background: rgba(29, 138, 76, 0.15);
+  border-bottom: 1px solid rgba(29, 138, 76, 0.3);
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.drift-hero__badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--drift-mha-green);
+  flex-shrink: 0;
+}
+
+.drift-hero__badge-text {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--drift-mha-green);
+  letter-spacing: 0.04em;
+}
+
+.drift-hero__inner {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 80px 48px;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  width: 100%;
+  gap: 48px;
+}
+
+.drift-hero__copy { z-index: 2; position: relative; }
+
+.drift-hero__headline {
+  font-size: clamp(42px, 6vw, 72px);
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.05;
+  margin: 0 0 24px;
+  letter-spacing: -0.02em;
+}
+
+.drift-hero__subhead {
+  font-size: clamp(17px, 1.8vw, 20px);
+  color: var(--drift-off-white);
+  line-height: 1.6;
+  margin: 0 0 16px;
+  max-width: 520px;
+  font-weight: 400;
+}
+
+.drift-hero__body {
+  font-size: 15px;
+  color: rgba(232, 230, 224, 0.7);
+  margin: 0 0 40px;
+  letter-spacing: 0.02em;
+}
+
+.drift-hero__ctas {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.drift-hero__product {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+}
+
+.drift-hero__product-img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+  border-radius: 12px;
+}
+
+.drift-hero__glow {
+  position: absolute;
+  inset: -20%;
+  border-radius: 50%;
+  z-index: 1;
+  animation: driftGlowCycle 30s ease-in-out infinite;
+  filter: blur(80px);
+  opacity: 0.45;
+}
+
+@keyframes driftGlowCycle {
+  0%   { background: radial-gradient(ellipse at center, #4B2DDB 0%, #1D8A4C 40%, transparent 70%); }
+  16%  { background: radial-gradient(ellipse at center, #DB2D8E 0%, #4B2DDB 40%, transparent 70%); }
+  33%  { background: radial-gradient(ellipse at center, #DB8C2D 0%, #DB2D8E 40%, transparent 70%); }
+  50%  { background: radial-gradient(ellipse at center, #2DB8DB 0%, #DB8C2D 40%, transparent 70%); }
+  66%  { background: radial-gradient(ellipse at center, #1D8A4C 0%, #2DB8DB 40%, transparent 70%); }
+  83%  { background: radial-gradient(ellipse at center, #4B2DDB 0%, #1D8A4C 40%, transparent 70%); }
+  100% { background: radial-gradient(ellipse at center, #4B2DDB 0%, #1D8A4C 40%, transparent 70%); }
+}
+
+/* ============================================================
+   SECTION 2: INSIGHT
+   ============================================================ */
+.drift-insight {
+  background: var(--drift-linen);
+  padding: var(--section-padding-desktop);
+  text-align: center;
+}
+
+.drift-insight__inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.drift-insight__quote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(28px, 4vw, 48px);
+  line-height: 1.35;
+  color: var(--drift-charcoal);
+  margin: 0 0 48px;
+  quotes: "\201C" "\201D";
+}
+
+.drift-insight__quote::before { content: open-quote; }
+.drift-insight__quote::after  { content: close-quote; }
+
+.drift-insight__body {
+  font-size: 18px;
+  line-height: 1.75;
+  color: var(--drift-mid-gray);
+  margin: 0;
+  text-align: left;
+}
+
+.drift-insight__body p { margin: 0 0 20px; }
+.drift-insight__body p:last-child { margin: 0; }
+
+/* ============================================================
+   SECTION 3: PRODUCT GRID
+   ============================================================ */
+.drift-products {
+  background: var(--drift-linen);
+  padding: var(--section-padding-desktop);
+  border-top: 1px solid rgba(26, 26, 26, 0.08);
+}
+
+.drift-products__header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.drift-products__headline {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700;
+  color: var(--drift-charcoal);
+  margin: 0 0 16px;
+  letter-spacing: -0.02em;
+}
+
+.drift-products__subhead {
+  font-size: 18px;
+  color: var(--drift-mid-gray);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.drift-products__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.drift-product-card {
+  background: var(--drift-warm-white);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(26, 26, 26, 0.08);
+  transition: transform var(--transition-standard), box-shadow var(--transition-standard);
+}
+
+.drift-product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+}
+
+.drift-product-card__img-wrap {
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background: #F0EDEA;
+}
+
+.drift-product-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: filter var(--transition-standard);
+}
+
+.drift-product-card:hover .drift-product-card__img {
+  filter: brightness(1.05);
+}
+
+.drift-product-card__tag {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.drift-product-card__tag--popular {
+  background: var(--drift-mha-green);
+  color: #FFFFFF;
+}
+
+.drift-product-card__tag--sale {
+  background: var(--drift-sale-red);
+  color: #FFFFFF;
+}
+
+.drift-product-card__body {
+  padding: 28px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.drift-product-card__name {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--drift-mid-gray);
+  margin: 0 0 8px;
+}
+
+.drift-product-card__headline {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--drift-charcoal);
+  margin: 0 0 16px;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.drift-product-card__desc {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--drift-mid-gray);
+  margin: 0 0 24px;
+  flex: 1;
+}
+
+.drift-product-card__features {
+  list-style: none;
+  margin: 0 0 24px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.drift-product-card__feature {
+  font-size: 13px;
+  color: var(--drift-charcoal);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.drift-product-card__feature::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--drift-mha-green);
+  flex-shrink: 0;
+}
+
+.drift-product-card__pricing {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.drift-product-card__price {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--drift-charcoal);
+}
+
+.drift-product-card__price--sale { color: var(--drift-sale-red); }
+
+.drift-product-card__price-compare {
+  font-size: 16px;
+  color: var(--drift-mid-gray);
+  text-decoration: line-through;
+}
+
+/* ============================================================
+   SECTION 4: ENDORSEMENTS
+   ============================================================ */
+.drift-endorsements {
+  background: var(--drift-midnight);
+  padding: var(--section-padding-desktop);
+}
+
+.drift-endorsements__header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.drift-endorsements__headline {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0 0 16px;
+  letter-spacing: -0.01em;
+}
+
+.drift-endorsements__subhead {
+  font-size: 17px;
+  color: var(--drift-off-white);
+  margin: 0 auto;
+  max-width: 600px;
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+.drift-endorsements__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 64px;
+}
+
+.drift-quote-card {
+  background: var(--drift-card-dark);
+  border: 1px solid var(--drift-border);
+  border-radius: var(--radius-card);
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Placeholder warning styling */
+.drift-quote-card--placeholder {
+  border-color: rgba(217, 48, 37, 0.3);
+  background: rgba(217, 48, 37, 0.04);
+}
+
+.drift-quote-card__placeholder-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(217, 48, 37, 0.15);
+  border: 1px solid rgba(217, 48, 37, 0.4);
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #FF6B6B;
+  margin-bottom: 4px;
+  align-self: flex-start;
+}
+
+.drift-quote-card__quote {
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(232, 230, 224, 0.6);
+  margin: 0;
+  font-style: italic;
+}
+
+.drift-quote-card__quote--pending {
+  color: rgba(255, 107, 107, 0.7);
+  font-style: normal;
+  font-size: 14px;
+}
+
+.drift-quote-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: auto;
+}
+
+.drift-quote-card__name {
+  font-size: 15px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.6);
+  margin: 0;
+}
+
+.drift-quote-card__credential {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(29, 138, 76, 0.6);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.drift-endorsements__press {
+  border-top: 1px solid var(--drift-border);
+  padding-top: 48px;
+  text-align: center;
+}
+
+.drift-endorsements__press-label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0 0 32px;
+}
+
+.drift-endorsements__press-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+
+.drift-endorsements__press-logo-placeholder {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.25);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border: 1px dashed rgba(255,255,255,0.15);
+  border-radius: 4px;
+}
+
+/* ============================================================
+   SECTION 5: APP EXPERIENCE
+   ============================================================ */
+.drift-app {
+  background: var(--drift-deep-navy);
+  padding: var(--section-padding-desktop);
+  overflow: hidden;
+}
+
+.drift-app__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.drift-app__mockup {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.drift-app__glow-bg {
+  position: absolute;
+  inset: -30%;
+  border-radius: 50%;
+  animation: driftGlowCycle 20s ease-in-out infinite;
+  filter: blur(60px);
+  opacity: 0.3;
+  z-index: 0;
+}
+
+.drift-app__phone-placeholder {
+  width: 260px;
+  aspect-ratio: 9/18;
+  background: var(--drift-card-dark);
+  border-radius: 32px;
+  border: 1px solid rgba(255,255,255,0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.35);
+  font-size: 13px;
+  text-align: center;
+  padding: 32px 24px;
+  position: relative;
+  z-index: 1;
+  gap: 16px;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+}
+
+.drift-app__phone-screen {
+  width: 100%;
+  background: rgba(29, 138, 76, 0.12);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.drift-app__phone-bar {
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(29, 138, 76, 0.5);
+}
+
+.drift-app__phone-bar:nth-child(2) { width: 75%; background: rgba(255,255,255,0.15); }
+.drift-app__phone-bar:nth-child(3) { width: 55%; background: rgba(255,255,255,0.1); }
+
+.drift-app__phone-label {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+}
+
+.drift-app__copy { color: #FFFFFF; }
+
+.drift-app__headline {
+  font-size: clamp(30px, 3.5vw, 44px);
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0 0 24px;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.drift-app__body {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--drift-off-white);
+  margin: 0 0 36px;
+  opacity: 0.85;
+}
+
+.drift-app__features {
+  list-style: none;
+  margin: 0 0 40px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.drift-app__feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 16px;
+  color: var(--drift-off-white);
+  line-height: 1.5;
+}
+
+.drift-app__feature-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--drift-mha-green);
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+
+.drift-app__ctas {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ============================================================
+   SECTION 6: GIFTING
+   ============================================================ */
+.drift-gifting {
+  background: var(--drift-linen);
+  padding: var(--section-padding-desktop);
+  position: relative;
+  overflow: hidden;
+}
+
+.drift-gifting__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.drift-gifting__img-wrap {
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 5/6;
+  background: #EDE8E3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.drift-gifting__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.drift-gifting__headline {
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 700;
+  color: var(--drift-charcoal);
+  margin: 0 0 20px;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.drift-gifting__subhead {
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--drift-mid-gray);
+  margin: 0 0 40px;
+}
+
+.drift-gifting__items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.drift-gifting__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: #FFFFFF;
+  border-radius: 12px;
+  border: 1px solid rgba(26,26,26,0.08);
+}
+
+.drift-gifting__item-info { flex: 1; }
+
+.drift-gifting__item-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--drift-charcoal);
+  margin: 0 0 2px;
+}
+
+.drift-gifting__item-desc {
+  font-size: 13px;
+  color: var(--drift-mid-gray);
+  margin: 0;
+}
+
+.drift-gifting__item-badge {
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  margin-left: 16px;
+}
+
+.drift-gifting__item-badge--price {
+  background: rgba(26,26,26,0.07);
+  color: var(--drift-charcoal);
+}
+
+.drift-gifting__item-badge--sale {
+  background: var(--drift-sale-red);
+  color: #FFFFFF;
+}
+
+/* ============================================================
+   SECTION 7: FINAL CTA
+   ============================================================ */
+.drift-final-cta {
+  background: var(--drift-midnight);
+  padding: var(--section-padding-desktop);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.drift-final-cta__glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  animation: driftGlowCycle 25s ease-in-out infinite;
+  filter: blur(100px);
+  opacity: 0.2;
+  z-index: 0;
+}
+
+.drift-final-cta__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.drift-final-cta__headline {
+  font-size: clamp(34px, 5vw, 60px);
+  font-weight: 800;
+  color: #FFFFFF;
+  margin: 0 0 24px;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+}
+
+.drift-final-cta__body {
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--drift-off-white);
+  margin: 0 0 48px;
+  opacity: 0.85;
+}
+
+.drift-final-cta__ctas {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ============================================================
+   PREVIEW BANNER
+   ============================================================ */
+.drift-preview-banner {
+  background: #1A1A2E;
+  border-bottom: 2px solid #4B2DDB;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.drift-preview-banner__left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.drift-preview-banner__badge {
+  background: #4B2DDB;
+  color: #FFFFFF;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-family: var(--font-sans);
+}
+
+.drift-preview-banner__text {
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+  font-family: var(--font-sans);
+}
+
+.drift-preview-banner__text strong {
+  color: #FFFFFF;
+}
+
+.drift-preview-banner__note {
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+  font-family: var(--font-sans);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+  .drift-hero__inner {
+    grid-template-columns: 1fr;
+    padding: 40px 24px 56px;
+    gap: 40px;
+  }
+  .drift-hero__product { order: 2; min-height: 280px; }
+  .drift-hero__copy { order: 1; }
+  .drift-hero__ctas { flex-direction: column; }
+  .drift-hero__ctas .drift-btn { width: 100%; text-align: center; }
+  .drift-insight { padding: var(--section-padding-mobile); }
+  .drift-products { padding: var(--section-padding-mobile); }
+  .drift-products__header { margin-bottom: 40px; }
+  .drift-products__grid { grid-template-columns: 1fr; gap: 20px; }
+  .drift-product-card__body { padding: 20px; }
+  .drift-endorsements { padding: var(--section-padding-mobile); }
+  .drift-endorsements__grid { grid-template-columns: 1fr; }
+  .drift-endorsements__press-logos { gap: 28px; }
+  .drift-app { padding: var(--section-padding-mobile); }
+  .drift-app__inner { grid-template-columns: 1fr; gap: 48px; }
+  .drift-app__ctas { flex-direction: column; }
+  .drift-app__ctas .drift-btn { width: 100%; }
+  .drift-gifting { padding: var(--section-padding-mobile); }
+  .drift-gifting__inner { grid-template-columns: 1fr; gap: 40px; }
+  .drift-gifting__img-wrap { aspect-ratio: 16/9; order: -1; }
+  .drift-final-cta { padding: var(--section-padding-mobile); }
+  .drift-final-cta__ctas { flex-direction: column; align-items: center; }
+  .drift-final-cta__ctas .drift-btn { width: 100%; max-width: 360px; }
+  .drift-preview-banner { padding: 10px 16px; }
+  .drift-preview-banner__note { display: none; }
+}
+
+@media (max-width: 480px) {
+  .drift-hero__badge-bar { padding: 10px 16px; }
+  .drift-quote-card { padding: 24px; }
+  .drift-app__phone-placeholder { width: 220px; }
+}
+
+@media print {
+  .drift-hero__glow,
+  .drift-app__glow-bg,
+  .drift-final-cta__glow,
+  .drift-preview-banner { display: none; }
+}
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     PREVIEW BANNER — internal review only
+     ============================================================ -->
+<div class="drift-preview-banner">
+  <div class="drift-preview-banner__left">
+    <span class="drift-preview-banner__badge">Preview</span>
+    <span class="drift-preview-banner__text">
+      <strong>Homedics Drift × MHAM 2026</strong> — Static HTML preview for team review
+    </span>
+  </div>
+  <span class="drift-preview-banner__note">⚠️ Doctor quotes pending Homedics approval · Product images from live CDN · Not for public distribution</span>
+</div>
+
+<!-- ============================================================
+     LANDING PAGE
+     ============================================================ -->
+<div class="drift-lp">
+
+  <!-- ══════════════════════════════════
+       SECTION 1: HERO
+       ══════════════════════════════════ -->
+  <section class="drift-hero">
+    <!-- MHA badge bar -->
+    <div class="drift-hero__badge-bar">
+      <span class="drift-hero__badge-dot"></span>
+      <span class="drift-hero__badge-text">Honoring Mental Health Awareness Month — May 2026</span>
+    </div>
+
+    <!-- Main hero content -->
+    <div class="drift-hero__inner">
+      <div class="drift-hero__copy">
+        <span class="drift-eyebrow drift-eyebrow--light">Mental Health Awareness Month 2026</span>
+        <h1 class="drift-hero__headline">Your good day<br>starts here.</h1>
+        <p class="drift-hero__subhead">Drift is the app-controlled ambient light clinically recognized for reducing stress, deepening calm, and turning any room into a place your mind can rest.</p>
+        <p class="drift-hero__body">Doctor-recommended. App-controlled. Yours.</p>
+        <div class="drift-hero__ctas">
+          <a href="/pages/drift" class="drift-btn drift-btn--primary">Shop Drift</a>
+          <a href="#drift-products" class="drift-btn drift-btn--secondary">Find Your Size</a>
+        </div>
+      </div>
+
+      <div class="drift-hero__product">
+        <div class="drift-hero__glow"></div>
+        <img
+          src="https://cdn.shopify.com/s/files/1/0703/4116/5241/files/ST-180-WN_PDP01_EN__15460.jpg?v=1752255441"
+          alt="Drift 10&quot; Premium Wood — app-controlled ambient light"
+          class="drift-hero__product-img"
+          loading="eager"
+        >
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       SECTION 2: INSIGHT / EMOTIONAL HOOK
+       ══════════════════════════════════ -->
+  <section class="drift-insight">
+    <div class="drift-insight__inner">
+      <span class="drift-eyebrow">Mental Health Awareness Month 2026</span>
+      <blockquote class="drift-insight__quote">
+        A good day isn't always big. Sometimes it's five quiet minutes watching patterns move — and finally, your mind goes still.
+      </blockquote>
+      <div class="drift-insight__body">
+        <p>Mental Health America's 2026 theme asks a simple question: What does a good day look like for you?</p>
+        <p>For millions of people, the answer starts at home. With a ritual. With a moment of intentional calm.</p>
+        <p>Drift was built for exactly that.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       SECTION 3: PRODUCT GRID
+       ══════════════════════════════════ -->
+  <section class="drift-products" id="drift-products">
+    <div class="drift-container">
+      <div class="drift-products__header">
+        <span class="drift-eyebrow">The Drift Collection</span>
+        <h2 class="drift-products__headline">Three sizes. One purpose.</h2>
+        <p class="drift-products__subhead">Find the drift that fits your space — and your day.</p>
+      </div>
+
+      <div class="drift-products__grid">
+
+        <!-- Card 1: Drift 10" -->
+        <div class="drift-product-card">
+          <div class="drift-product-card__img-wrap">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0703/4116/5241/files/ST-180-WN_PDP01_EN__15460.jpg?v=1752255441"
+              alt="Drift 10&quot; Premium Wood"
+              class="drift-product-card__img"
+              loading="lazy"
+            >
+            <span class="drift-product-card__tag drift-product-card__tag--popular">Most Popular</span>
+          </div>
+          <div class="drift-product-card__body">
+            <p class="drift-product-card__name">Drift 10" Premium Wood</p>
+            <h3 class="drift-product-card__headline">Where calm begins.</h3>
+            <p class="drift-product-card__desc">The drift 10" is your daily ritual — compact enough for a bedside table or desk, powerful enough to shift your entire headspace. WiFi-enabled so you're always in control, even from another room. RGBIC Smart Lights mean no two moments look the same.</p>
+            <ul class="drift-product-card__features">
+              <li class="drift-product-card__feature">WiFi-enabled</li>
+              <li class="drift-product-card__feature">RGBIC Smart Lights</li>
+              <li class="drift-product-card__feature">FSC-certified premium wood</li>
+              <li class="drift-product-card__feature">Full app control</li>
+            </ul>
+            <div class="drift-product-card__pricing">
+              <span class="drift-product-card__price">$299.99</span>
+            </div>
+            <a href="/products/drift-10-premium-wood" class="drift-btn drift-btn--dark drift-btn--full">Shop Drift 10"</a>
+          </div>
+        </div>
+
+        <!-- Card 2: Drift 16" -->
+        <div class="drift-product-card">
+          <div class="drift-product-card__img-wrap">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0703/4116/5241/files/SS-300__27342.jpg?v=1757024447"
+              alt="Drift 16&quot;"
+              class="drift-product-card__img"
+              loading="lazy"
+            >
+            <span class="drift-product-card__tag drift-product-card__tag--sale">On Sale</span>
+          </div>
+          <div class="drift-product-card__body">
+            <p class="drift-product-card__name">Drift 16"</p>
+            <h3 class="drift-product-card__headline">Good days are better shared.</h3>
+            <p class="drift-product-card__desc">The drift 16" was made for living rooms, shared bedrooms, and the spaces where life happens together. Bigger canvas, bigger calm. Bluetooth-enabled with full RGB lighting for any mood, any moment.</p>
+            <ul class="drift-product-card__features">
+              <li class="drift-product-card__feature">Bluetooth enabled</li>
+              <li class="drift-product-card__feature">RGB lights</li>
+              <li class="drift-product-card__feature">App controlled</li>
+              <li class="drift-product-card__feature">Ideal for living rooms</li>
+            </ul>
+            <div class="drift-product-card__pricing">
+              <span class="drift-product-card__price drift-product-card__price--sale">On Sale</span>
+              <span class="drift-product-card__price-compare">$399.99</span>
+            </div>
+            <a href="/products/drift-16" class="drift-btn drift-btn--dark drift-btn--full">Shop Drift 16"</a>
+          </div>
+        </div>
+
+        <!-- Card 3: Drift 21" -->
+        <div class="drift-product-card">
+          <div class="drift-product-card__img-wrap">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0703/4116/5241/files/SS-400__05842.jpg?v=1756901876"
+              alt="Drift 21&quot;"
+              class="drift-product-card__img"
+              loading="lazy"
+            >
+            <span class="drift-product-card__tag drift-product-card__tag--sale">On Sale</span>
+          </div>
+          <div class="drift-product-card__body">
+            <p class="drift-product-card__name">Drift 21"</p>
+            <h3 class="drift-product-card__headline">Make space for calm.</h3>
+            <p class="drift-product-card__desc">When you want to transform a room — not just light it — drift 21" is your answer. The largest canvas in the drift family, delivering immersive RGB ambiance that anchors any space in calm.</p>
+            <ul class="drift-product-card__features">
+              <li class="drift-product-card__feature">Bluetooth enabled</li>
+              <li class="drift-product-card__feature">RGB lights</li>
+              <li class="drift-product-card__feature">App controlled</li>
+              <li class="drift-product-card__feature">Perfect for gifting</li>
+            </ul>
+            <div class="drift-product-card__pricing">
+              <span class="drift-product-card__price drift-product-card__price--sale">On Sale</span>
+              <span class="drift-product-card__price-compare">$499.99</span>
+            </div>
+            <a href="/products/drift-21" class="drift-btn drift-btn--dark drift-btn--full">Shop Drift 21"</a>
+          </div>
+        </div>
+
+      </div><!-- /.drift-products__grid -->
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       SECTION 4: DOCTOR ENDORSEMENTS
+       ══════════════════════════════════ -->
+  <section class="drift-endorsements">
+    <div class="drift-container">
+      <div class="drift-endorsements__header">
+        <span class="drift-eyebrow drift-eyebrow--light">Expert Voices</span>
+        <h2 class="drift-endorsements__headline">What the experts say.</h2>
+        <p class="drift-endorsements__subhead">Drift is doctor-recommended for stress relief, mindfulness, and sleep — not just a beautiful object.</p>
+      </div>
+
+      <div class="drift-endorsements__grid">
+
+        <!-- Quote 1 -->
+        <div class="drift-quote-card drift-quote-card--placeholder">
+          <span class="drift-quote-card__placeholder-badge">⚠ Pending Approval</span>
+          <p class="drift-quote-card__quote drift-quote-card__quote--pending">INSERT APPROVED QUOTE — Dr. Schwartz — re: stress relief / mindfulness. Pull verbatim from Homedics asset library before publishing.</p>
+          <div class="drift-quote-card__meta">
+            <p class="drift-quote-card__name">Dr. [Schwartz — First Name TBD]</p>
+            <p class="drift-quote-card__credential">[Credential — e.g. MD, Clinical Psychologist, Board-Certified]</p>
+          </div>
+        </div>
+
+        <!-- Quote 2 -->
+        <div class="drift-quote-card drift-quote-card--placeholder">
+          <span class="drift-quote-card__placeholder-badge">⚠ Pending Approval</span>
+          <p class="drift-quote-card__quote drift-quote-card__quote--pending">INSERT APPROVED QUOTE — Dr. Rosenstock — re: sleep / ambient light. Pull verbatim from Homedics asset library before publishing.</p>
+          <div class="drift-quote-card__meta">
+            <p class="drift-quote-card__name">Dr. [Rosenstock — First Name TBD]</p>
+            <p class="drift-quote-card__credential">[Credential — e.g. Sleep Medicine Specialist, MD]</p>
+          </div>
+        </div>
+
+        <!-- Quote 3 -->
+        <div class="drift-quote-card drift-quote-card--placeholder">
+          <span class="drift-quote-card__placeholder-badge">⚠ Pending Approval</span>
+          <p class="drift-quote-card__quote drift-quote-card__quote--pending">INSERT APPROVED QUOTE — Dr. Gonzalez — re: anxiety reduction. Pull verbatim from Homedics asset library before publishing.</p>
+          <div class="drift-quote-card__meta">
+            <p class="drift-quote-card__name">Dr. [Gonzalez — First Name TBD]</p>
+            <p class="drift-quote-card__credential">[Credential — e.g. Licensed Therapist, Anxiety Specialist]</p>
+          </div>
+        </div>
+
+        <!-- Quote 4 -->
+        <div class="drift-quote-card drift-quote-card--placeholder">
+          <span class="drift-quote-card__placeholder-badge">⚠ Pending Approval</span>
+          <p class="drift-quote-card__quote drift-quote-card__quote--pending">INSERT APPROVED QUOTE — Dr. Nieves — re: mindfulness ritual. Pull verbatim from Homedics asset library before publishing.</p>
+          <div class="drift-quote-card__meta">
+            <p class="drift-quote-card__name">Dr. [Nieves — First Name TBD]</p>
+            <p class="drift-quote-card__credential">[Credential — e.g. Mindfulness Coach, PsyD]</p>
+          </div>
+        </div>
+
+      </div><!-- /.drift-endorsements__grid -->
+
+      <!-- Press bar -->
+      <div class="drift-endorsements__press">
+        <p class="drift-endorsements__press-label">As seen in</p>
+        <div class="drift-endorsements__press-logos">
+          <span class="drift-endorsements__press-logo-placeholder">[Publication Name]</span>
+          <span class="drift-endorsements__press-logo-placeholder">[Publication Name]</span>
+          <span class="drift-endorsements__press-logo-placeholder">[Publication Name]</span>
+          <span class="drift-endorsements__press-logo-placeholder">[Publication Name]</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       SECTION 5: APP EXPERIENCE
+       ══════════════════════════════════ -->
+  <section class="drift-app">
+    <div class="drift-app__inner">
+      <!-- Phone mockup -->
+      <div class="drift-app__mockup">
+        <div class="drift-app__glow-bg"></div>
+        <div class="drift-app__phone-placeholder">
+          <span class="drift-app__phone-label">Homedics Drift App</span>
+          <div class="drift-app__phone-screen">
+            <div class="drift-app__phone-bar"></div>
+            <div class="drift-app__phone-bar"></div>
+            <div class="drift-app__phone-bar"></div>
+          </div>
+          <span style="font-size:11px; color:rgba(255,255,255,0.2); line-height:1.5;">App screenshot<br>— insert from<br>Homedics assets</span>
+        </div>
+      </div>
+
+      <!-- Copy -->
+      <div class="drift-app__copy">
+        <span class="drift-eyebrow drift-eyebrow--light">The Homedics Drift App</span>
+        <h2 class="drift-app__headline">Your calm.<br>Your control.</h2>
+        <p class="drift-app__body">drift connects to the Homedics Drift app — giving you complete control over color, brightness, motion speed, and pre-set moods. Schedule your evening wind-down. Wake up to a soft sunrise. Your good day, programmed the night before.</p>
+        <ul class="drift-app__features">
+          <li class="drift-app__feature">
+            <span class="drift-app__feature-dot"></span>
+            Millions of color combinations — set the exact mood you need
+          </li>
+          <li class="drift-app__feature">
+            <span class="drift-app__feature-dot"></span>
+            Schedule lighting modes — sunrise wake-up, evening wind-down
+          </li>
+          <li class="drift-app__feature">
+            <span class="drift-app__feature-dot"></span>
+            WiFi control (Drift 10") — adjust from anywhere in your home
+          </li>
+        </ul>
+        <div class="drift-app__ctas">
+          <a href="/pages/drift" class="drift-btn drift-btn--primary">Shop Drift</a>
+          <a href="#" class="drift-btn drift-btn--secondary">Download the App</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       SECTION 6: GIFTING (Mother's Day)
+       ══════════════════════════════════ -->
+  <section class="drift-gifting">
+    <div class="drift-gifting__inner">
+      <!-- Lifestyle image -->
+      <div class="drift-gifting__img-wrap">
+        <img
+          src="https://placehold.co/600x720/EDE8E3/8B7355?text=Lifestyle+Photo%0AMother%27s+Day+Scene%0A%E2%80%94+warm%2C+inviting+home"
+          alt="Mother's Day gifting — warm lifestyle scene"
+          class="drift-gifting__img"
+          loading="lazy"
+        >
+      </div>
+
+      <!-- Copy -->
+      <div class="drift-gifting__copy">
+        <span class="drift-eyebrow">Mother's Day — May 11, 2026</span>
+        <h2 class="drift-gifting__headline">Give her more<br>good days.</h2>
+        <p class="drift-gifting__subhead">Mother's Day is May 11. Drift is the gift that keeps giving — every evening, every morning, every quiet moment she finally gets to herself.</p>
+
+        <div class="drift-gifting__items">
+          <div class="drift-gifting__item">
+            <div class="drift-gifting__item-info">
+              <p class="drift-gifting__item-name">Drift 10" Premium Wood</p>
+              <p class="drift-gifting__item-desc">The perfect first gift</p>
+            </div>
+            <span class="drift-gifting__item-badge drift-gifting__item-badge--price">$299.99</span>
+          </div>
+          <div class="drift-gifting__item">
+            <div class="drift-gifting__item-info">
+              <p class="drift-gifting__item-name">Drift 16"</p>
+              <p class="drift-gifting__item-desc">For the home she loves</p>
+            </div>
+            <span class="drift-gifting__item-badge drift-gifting__item-badge--sale">On Sale</span>
+          </div>
+          <div class="drift-gifting__item">
+            <div class="drift-gifting__item-info">
+              <p class="drift-gifting__item-name">Drift 21"</p>
+              <p class="drift-gifting__item-desc">For the mom who deserves the room</p>
+            </div>
+            <span class="drift-gifting__item-badge drift-gifting__item-badge--sale">On Sale</span>
+          </div>
+        </div>
+
+        <a href="/pages/drift" class="drift-btn drift-btn--dark">Shop Mother's Day Gifts</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       SECTION 7: FINAL CTA
+       ══════════════════════════════════ -->
+  <section class="drift-final-cta">
+    <div class="drift-final-cta__glow"></div>
+    <div class="drift-final-cta__inner">
+      <span class="drift-eyebrow drift-eyebrow--light">Mental Health Awareness Month 2026</span>
+      <h2 class="drift-final-cta__headline">Your good day<br>is waiting.</h2>
+      <p class="drift-final-cta__body">Start with five minutes. A room that feels different. A light that moves with you. Drift was built for the small moments that change everything.</p>
+      <div class="drift-final-cta__ctas">
+        <a href="/pages/drift" class="drift-btn drift-btn--primary">Shop Drift</a>
+        <a href="#drift-products" class="drift-btn drift-btn--secondary">Find Your Size</a>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /.drift-lp -->
+
+</body>
+</html>

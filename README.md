@@ -1,6 +1,8 @@
 # Homedics Drift × Mental Health Awareness Month 2026
 ## Landing Page: "Your Good Day Starts Here"
 
+**🔗 Live Preview: https://everything-bagel-dev.github.io/homedics-drift-lp/**
+
 Built by Everything Bagel Partners / Jarvis  
 Campaign flight: May 1–31, 2026  
 Store: [homedics.com](https://www.homedics.com)
