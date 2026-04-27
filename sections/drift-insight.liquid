@@ -3,11 +3,11 @@
   Section 2 — The Insight / Emotional Hook
   Homedics Drift × Mental Health Awareness Month 2026
 
-  Includes:
-  - Eyebrow label
+  Layout: Image on left, copy on right (left-aligned)
   - Large serif italic pull quote
   - 3-paragraph body copy connecting MHA theme to Drift
-  - Warm linen background — no product imagery, let the words breathe
+  - Warm linen background
+  - Image: lifestyle shot (STS-400_0931.jpg from Air: https://app.air.inc/a/c8d305320)
 {% endcomment %}
 
 {{ 'drift-mham.css' | asset_url | stylesheet_tag }}
@@ -15,16 +15,30 @@
 <section class="drift-lp drift-insight" id="drift-insight">
   <div class="drift-insight__inner drift-container">
 
-    <span class="drift-eyebrow">{{ section.settings.eyebrow }}</span>
+    {%- comment %} LEFT: Lifestyle image {%- endcomment %}
+    <div class="drift-insight__image">
+      {%- if section.settings.image != blank %}
+        {{ section.settings.image | image_url: width: 800 | image_tag: class: 'drift-insight__img', loading: 'lazy' }}
+      {%- else %}
+        <div class="drift-insight__image-placeholder">
+          <span>Lifestyle Image</span>
+        </div>
+      {%- endif %}
+    </div>
 
-    <blockquote class="drift-insight__quote">
-      {{ section.settings.pull_quote }}
-    </blockquote>
+    {%- comment %} RIGHT: Copy block — left-aligned {%- endcomment %}
+    <div class="drift-insight__copy">
 
-    <div class="drift-insight__body">
-      <p>{{ section.settings.body_paragraph_1 }}</p>
-      <p>{{ section.settings.body_paragraph_2 }}</p>
-      <p>{{ section.settings.body_paragraph_3 }}</p>
+      <blockquote class="drift-insight__quote">
+        {{ section.settings.pull_quote }}
+      </blockquote>
+
+      <div class="drift-insight__body">
+        <p>{{ section.settings.body_paragraph_1 }}</p>
+        <p>{{ section.settings.body_paragraph_2 }}</p>
+        <p>{{ section.settings.body_paragraph_3 }}</p>
+      </div>
+
     </div>
 
   </div>
@@ -37,16 +51,16 @@
   "class": "shopify-section--drift-insight",
   "settings": [
     {
-      "type": "text",
-      "id": "eyebrow",
-      "label": "Eyebrow label",
-      "default": "Mental Health Awareness Month 2026"
+      "type": "image_picker",
+      "id": "image",
+      "label": "Lifestyle image (left side)",
+      "info": "Use STS-400_0931.jpg from Air: https://app.air.inc/a/c8d305320"
     },
     {
       "type": "textarea",
       "id": "pull_quote",
       "label": "Pull quote (serif italic display)",
-      "default": "A good day isn't always big. Sometimes it's five quiet minutes watching patterns move — and finally, your mind goes still."
+      "default": "\u201cA good day isn't always big. Sometimes it's five quiet minutes watching patterns move \u2014 and finally, your mind goes still.\u201d"
     },
     {
       "type": "textarea",

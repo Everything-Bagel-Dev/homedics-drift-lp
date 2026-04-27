@@ -333,21 +333,52 @@
 .drift-insight {
   background: var(--drift-linen);
   padding: var(--section-padding-desktop);
-  text-align: center;
 }
 
 .drift-insight__inner {
-  max-width: 800px;
+  max-width: var(--container-max);
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.drift-insight__image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.drift-insight__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.drift-insight__image-placeholder {
+  background: #e0ddd6;
+  aspect-ratio: 3/4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  color: var(--drift-mid-gray);
+  font-size: 14px;
+}
+
+.drift-insight__copy {
+  text-align: left;
 }
 
 .drift-insight__quote {
   font-family: var(--font-kansas);
   font-style: italic;
-  font-size: clamp(28px, 4vw, 48px);
+  font-size: clamp(24px, 3.5vw, 40px);
   line-height: 1.35;
   color: var(--drift-charcoal);
-  margin: 0 0 48px;
+  margin: 0 0 32px;
   quotes: "\201C" "\201D";
 }
 
@@ -1039,6 +1070,19 @@
   /* Insight */
   .drift-insight {
     padding: var(--section-padding-mobile);
+  }
+
+  .drift-insight__inner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .drift-insight__image {
+    order: 1;
+  }
+
+  .drift-insight__copy {
+    order: 2;
   }
 
   /* Products */

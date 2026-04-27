@@ -18,7 +18,6 @@
     "drift_insight": {
       "type": "drift-insight",
       "settings": {
-        "eyebrow": "Mental Health Awareness Month 2026",
         "pull_quote": "A good day isn't always big. Sometimes it's five quiet minutes watching patterns move \u2014 and finally, your mind goes still.",
         "body_paragraph_1": "Mental Health America's 2026 theme asks a simple question: What does a good day look like for you?",
         "body_paragraph_2": "For millions of people, the answer starts at home. With a ritual. With a moment of intentional calm.",
@@ -73,7 +72,6 @@
     "drift_endorsements": {
       "type": "drift-endorsements",
       "settings": {
-        "eyebrow": "Expert Voices",
         "headline": "What the experts say.",
         "subhead": "Drift is doctor-recommended for stress relief, mindfulness, and sleep \u2014 not just a beautiful object.",
         "quote_1_text": "\u26a0\ufe0f [INSERT APPROVED QUOTE \u2014 Dr. Schwartz \u2014 re: stress relief / mindfulness. Pull verbatim from Homedics asset library before publishing.]",

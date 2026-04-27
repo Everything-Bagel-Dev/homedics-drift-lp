@@ -324,21 +324,41 @@ body { margin: 0; padding: 0; }
 .drift-insight {
   background: var(--drift-linen);
   padding: var(--section-padding-desktop);
-  text-align: center;
 }
 
 .drift-insight__inner {
-  max-width: 800px;
+  max-width: var(--container-max);
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.drift-insight__image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.drift-insight__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.drift-insight__copy {
+  text-align: left;
 }
 
 .drift-insight__quote {
   font-family: var(--font-kansas);
   font-style: italic;
-  font-size: clamp(28px, 4vw, 48px);
+  font-size: clamp(24px, 3.5vw, 40px);
   line-height: 1.35;
   color: var(--drift-charcoal);
-  margin: 0 0 48px;
+  margin: 0 0 32px;
   quotes: "\201C" "\201D";
 }
 
@@ -1002,6 +1022,7 @@ body { margin: 0; padding: 0; }
   .drift-hero__guarantee { gap: 16px; }
 
   .drift-insight { padding: var(--section-padding-mobile); }
+  .drift-insight__inner { grid-template-columns: 1fr; gap: 24px; }
 
   .drift-products { padding: var(--section-padding-mobile); }
   .drift-products__header { margin-bottom: 20px; }
@@ -1135,14 +1156,18 @@ body { margin: 0; padding: 0; }
        ══════════════════════════════════ -->
   <section class="drift-insight">
     <div class="drift-insight__inner">
-      <span class="drift-eyebrow">Mental Health Awareness Month 2026</span>
-      <blockquote class="drift-insight__quote">
-        A good day isn't always big. Sometimes it's five quiet minutes watching patterns move — and finally, your mind goes still.
-      </blockquote>
-      <div class="drift-insight__body">
-        <p>Mental Health America's 2026 theme asks a simple question: What does a good day look like for you?</p>
-        <p>For millions of people, the answer starts at home. With a ritual. With a moment of intentional calm.</p>
-        <p>Drift was built for exactly that.</p>
+      <div class="drift-insight__image">
+        <img class="drift-insight__img" src="https://cdn.shopify.com/s/files/1/0703/4116/5241/files/SS-300__27342.jpg?v=1757024447" alt="Drift lifestyle" loading="lazy">
+      </div>
+      <div class="drift-insight__copy">
+        <blockquote class="drift-insight__quote">
+          A good day isn't always big. Sometimes it's five quiet minutes watching patterns move — and finally, your mind goes still.
+        </blockquote>
+        <div class="drift-insight__body">
+          <p>Mental Health America's 2026 theme asks a simple question: What does a good day look like for you?</p>
+          <p>For millions of people, the answer starts at home. With a ritual. With a moment of intentional calm.</p>
+          <p>Drift was built for exactly that.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -1261,7 +1286,6 @@ body { margin: 0; padding: 0; }
   <section class="drift-endorsements">
     <div class="drift-container">
       <div class="drift-endorsements__header">
-        <span class="drift-eyebrow drift-eyebrow--light">Expert Voices</span>
         <h2 class="drift-endorsements__headline">What the experts say.</h2>
         <p class="drift-endorsements__subhead">Drift is doctor-recommended for stress relief, mindfulness, and sleep — not just a beautiful object.</p>
       </div>
