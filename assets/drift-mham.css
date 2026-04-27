@@ -87,7 +87,7 @@
    ============================================================ */
 .drift-hero {
   background-color: var(--drift-midnight);
-  min-height: 100vh;
+  min-height: auto;
   padding: 0;
   position: relative;
   overflow: hidden;
@@ -120,7 +120,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  padding: 80px 48px 80px;
+  padding: 27px 48px 27px;
   max-width: var(--container-max);
   margin: 0 auto;
   width: 100%;
@@ -1014,7 +1014,7 @@
   /* Hero */
   .drift-hero__inner {
     grid-template-columns: 1fr;
-    padding: 40px 24px 56px;
+    padding: 13px 24px 19px;
     gap: 40px;
   }
 
