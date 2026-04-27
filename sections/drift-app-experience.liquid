@@ -3,12 +3,11 @@
   Section 5 — App Experience (Split-Screen)
   Homedics Drift × Mental Health Awareness Month 2026
 
-  Includes:
-  - Split-screen layout: phone mockup LEFT, copy block RIGHT
-  - Ambient glow animation behind phone mockup
-  - Feature bullet list
-  - Primary (Shop Drift) + Secondary (Download App) CTAs
-  - Deep Navy background
+  Jeff Laine design feedback applied (April 2026):
+  - Layout: lifestyle image LEFT, copy block RIGHT (was phone mockup left)
+  - Primary lifestyle image: ST-400-CE_LS3.png from Air (https://app.air.inc/a/ca30e8d92)
+  - Secondary image option: ST-180-AW_PDP06.png from Air (https://app.air.inc/a/c6940d172)
+  - Two image_picker settings; primary takes precedence, secondary as fallback
 {% endcomment %}
 
 {{ 'drift-mham.css' | asset_url | stylesheet_tag }}
@@ -16,24 +15,35 @@
 <section class="drift-lp drift-app" id="drift-app">
   <div class="drift-app__inner drift-container">
 
-    {%- comment %} LEFT: Phone mockup with ambient glow {%- endcomment %}
-    <div class="drift-app__mockup">
+    {%- comment %} LEFT: Lifestyle image (replaced phone mockup per Jeff feedback) {%- endcomment %}
+    <div class="drift-app__lifestyle">
 
-      {%- comment %} Ambient RGBIC glow — purely CSS {%- endcomment %}
-      <div class="drift-app__glow-bg" aria-hidden="true"></div>
-
-      {%- if section.settings.app_phone_image != blank %}
-        {{ section.settings.app_phone_image
-          | image_url: width: 600
+      {%- if section.settings.lifestyle_image != blank %}
+        {{ section.settings.lifestyle_image
+          | image_url: width: 700
           | image_tag:
-            class: 'drift-app__phone',
-            alt: section.settings.app_phone_image.alt | default: 'Homedics Drift app on iPhone — ambient light control',
+            class: 'drift-app__lifestyle-img',
+            alt: section.settings.lifestyle_image.alt | default: 'Homedics Drift ambient light — lifestyle in home setting',
             loading: 'lazy',
-            width: 600
+            width: 700
+        }}
+      {%- elsif section.settings.lifestyle_image_alt != blank %}
+        {{ section.settings.lifestyle_image_alt
+          | image_url: width: 700
+          | image_tag:
+            class: 'drift-app__lifestyle-img',
+            alt: section.settings.lifestyle_image_alt.alt | default: 'Homedics Drift ambient light — lifestyle in home setting',
+            loading: 'lazy',
+            width: 700
         }}
       {%- else %}
-        <div class="drift-app__phone-placeholder">
-          [Phone mockup: Real Drift app UI<br>in clean phone frame —<br>not illustrated]
+        <div class="drift-app__lifestyle-placeholder">
+          [Primary lifestyle image:<br>
+          ST-400-CE_LS3.png from Air<br>
+          https://app.air.inc/a/ca30e8d92<br><br>
+          Alternative:<br>
+          ST-180-AW_PDP06.png<br>
+          https://app.air.inc/a/c6940d172]
         </div>
       {%- endif %}
 
@@ -91,6 +101,23 @@
   "tag": "section",
   "class": "shopify-section--drift-app",
   "settings": [
+    {
+      "type": "header",
+      "content": "Lifestyle Images",
+      "info": "Image shows on LEFT. Primary takes precedence; secondary used if primary is blank."
+    },
+    {
+      "type": "image_picker",
+      "id": "lifestyle_image",
+      "label": "Primary lifestyle image",
+      "info": "Use ST-400-CE_LS3.png from Air: https://app.air.inc/a/ca30e8d92 — lifestyle shot of Drift in home setting."
+    },
+    {
+      "type": "image_picker",
+      "id": "lifestyle_image_alt",
+      "label": "Secondary lifestyle image (fallback)",
+      "info": "Alternative option: ST-180-AW_PDP06.png from Air: https://app.air.inc/a/c6940d172"
+    },
     {
       "type": "header",
       "content": "Copy"
@@ -161,16 +188,6 @@
       "id": "cta_secondary_url",
       "label": "Secondary CTA URL",
       "info": "Link to App Store or Homedics app page. Leave blank to hide."
-    },
-    {
-      "type": "header",
-      "content": "Phone Mockup Image"
-    },
-    {
-      "type": "image_picker",
-      "id": "app_phone_image",
-      "label": "App phone mockup",
-      "info": "Real Drift app UI in a clean phone frame. Not illustrated. Min 600px wide."
     }
   ],
   "presets": [

@@ -121,9 +121,7 @@
             </div>
           {%- endif %}
 
-          <span class="drift-product-card__tag drift-product-card__tag--sale">
-            {{ section.settings.product_2_tag }}
-          </span>
+          {%- comment %} Sale tag removed per Jeff feedback — pricing block below shows strikethrough price {%- endcomment %}
         </div>
 
         <div class="drift-product-card__body">
@@ -202,9 +200,7 @@
             </div>
           {%- endif %}
 
-          <span class="drift-product-card__tag drift-product-card__tag--sale">
-            {{ section.settings.product_3_tag }}
-          </span>
+          {%- comment %} Sale tag removed per Jeff feedback — pricing block below shows strikethrough price {%- endcomment %}
         </div>
 
         <div class="drift-product-card__body">
@@ -389,7 +385,7 @@
       "type": "text",
       "id": "product_2_tag",
       "label": "Tag pill text",
-      "default": "On Sale — Best for Shared Spaces"
+      "default": ""
     },
     {
       "type": "text",
@@ -476,7 +472,7 @@
       "type": "text",
       "id": "product_3_tag",
       "label": "Tag pill text",
-      "default": "On Sale — The Statement Piece"
+      "default": ""
     },
     {
       "type": "text",

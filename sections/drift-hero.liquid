@@ -3,18 +3,60 @@
   Section 1 — Hero (Dark, Full-Bleed)
   Homedics Drift × Mental Health Awareness Month 2026
 
-  Includes:
-  - MHA badge ribbon (top)
-  - Full-bleed dark hero with left copy + right product image
-  - Subtle RGBIC CSS glow animation behind product
-  - Primary + secondary CTAs
+  Jeff Laine design feedback applied (April 2026):
+  - Image LEFT, copy RIGHT layout (was copy-left / image-right)
+  - Kansas font via @font-face (Shopify asset URLs — files to be uploaded by team)
+  - Video support: video_url setting accepts Shopify-hosted or external MP4
+  - Single "Shop" CTA — removed secondary "Find Your Size" button
+  - Guarantee bar below CTA (Free Shipping + 30-Day Guarantee, SVG icons)
+  - RGBIC glow opacity increased 20% (0.45 → 0.54 in CSS)
+  - Removed "Mental Health Awareness Month 2026" eyebrow text (badge bar remains)
+  - Hero image: STS-400_0931.jpg from Air (https://app.air.inc/a/c8d305320)
+  - Video: "07- HOW TO AT NICKS_1.mp4" from Air (https://app.air.inc/a/c699e1403)
 {% endcomment %}
+
+{%- comment %}
+  Kansas font-face declarations.
+  Requires Kansas-Regular.woff2, Kansas-Bold.woff2, Kansas-BoldItalic.woff2,
+  Kansas-Italic.woff2 uploaded to Shopify theme assets.
+  Font files: https://drive.google.com/open?id=1uMjmmU9DGtSxhTHojfy2pgvuX7mGACLM
+{%- endcomment %}
+<style>
+  @font-face {
+    font-family: 'Kansas';
+    src: url('{{ "Kansas-Regular.woff2" | asset_url }}') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Kansas';
+    src: url('{{ "Kansas-Bold.woff2" | asset_url }}') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Kansas';
+    src: url('{{ "Kansas-BoldItalic.woff2" | asset_url }}') format('woff2');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Kansas';
+    src: url('{{ "Kansas-Italic.woff2" | asset_url }}') format('woff2');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+  }
+</style>
 
 {{ 'drift-mham.css' | asset_url | stylesheet_tag }}
 
 <section class="drift-lp drift-hero" id="drift-hero">
 
-  {%- comment %} MHA Badge ribbon {%- endcomment %}
+  {%- comment %} MHA Badge ribbon — kept; eyebrow text in copy block removed {%- endcomment %}
   {% if section.settings.badge_enabled %}
   <div class="drift-hero__badge-bar">
     <span aria-hidden="true">🟢</span>
@@ -24,10 +66,50 @@
 
   <div class="drift-hero__inner drift-container">
 
-    {%- comment %} LEFT: Copy block {%- endcomment %}
-    <div class="drift-hero__copy">
+    {%- comment %} LEFT: Product image or video with RGBIC glow {%- endcomment %}
+    <div class="drift-hero__product">
 
-      <span class="drift-eyebrow">{{ section.settings.eyebrow }}</span>
+      {%- comment %} RGBIC animated glow — purely CSS, no JS {%- endcomment %}
+      <div class="drift-hero__glow" aria-hidden="true"></div>
+
+      {%- if section.settings.video_url != blank %}
+        {%- comment %} Video mode — Shopify-hosted video or external MP4 URL {%- endcomment %}
+        <div class="drift-hero__video-wrap">
+          <video
+            autoplay
+            muted
+            loop
+            playsinline
+            {%- if section.settings.hero_image != blank %}
+              poster="{{ section.settings.hero_image | image_url: width: 900 }}"
+            {%- endif %}
+          >
+            <source src="{{ section.settings.video_url }}" type="video/mp4">
+          </video>
+        </div>
+      {%- elsif section.settings.hero_image != blank %}
+        {{ section.settings.hero_image
+          | image_url: width: 900
+          | image_tag:
+            class: 'drift-hero__product-img',
+            alt: section.settings.hero_image.alt | default: 'Homedics Drift — ambient light diffuser lifestyle photo',
+            loading: 'eager',
+            width: section.settings.hero_image.width,
+            height: section.settings.hero_image.height
+        }}
+      {%- else %}
+        <div class="drift-hero__product-placeholder">
+          [Hero image: STS-400_0931.jpg from Air<br>
+          https://app.air.inc/a/c8d305320<br><br>
+          Video: "07- HOW TO AT NICKS_1.mp4"<br>
+          https://app.air.inc/a/c699e1403]
+        </div>
+      {%- endif %}
+
+    </div>
+
+    {%- comment %} RIGHT: Copy block {%- endcomment %}
+    <div class="drift-hero__copy">
 
       <h1 class="drift-hero__headline">{{ section.settings.headline }}</h1>
 
@@ -35,6 +117,7 @@
 
       <p class="drift-hero__body">{{ section.settings.body_text }}</p>
 
+      {%- comment %} Single CTA — "Find Your Size" removed per Jeff feedback {%- endcomment %}
       <div class="drift-hero__ctas">
         <a
           href="{{ section.settings.cta_primary_url }}"
@@ -43,38 +126,26 @@
         >
           {{ section.settings.cta_primary_text }}
         </a>
-        <a
-          href="{{ section.settings.cta_secondary_url }}"
-          class="drift-btn drift-btn--secondary"
-          aria-label="{{ section.settings.cta_secondary_text }}"
-        >
-          {{ section.settings.cta_secondary_text }}
-        </a>
       </div>
 
-    </div>
-
-    {%- comment %} RIGHT: Product image with glow animation {%- endcomment %}
-    <div class="drift-hero__product">
-
-      {%- comment %} RGBIC animated glow — purely CSS, no JS {%- endcomment %}
-      <div class="drift-hero__glow" aria-hidden="true"></div>
-
-      {%- if section.settings.hero_image != blank %}
-        {{ section.settings.hero_image
-          | image_url: width: 900
-          | image_tag:
-            class: 'drift-hero__product-img',
-            alt: section.settings.hero_image.alt | default: 'Homedics Drift 10 Premium Wood — ambient light diffuser',
-            loading: 'eager',
-            width: section.settings.hero_image.width,
-            height: section.settings.hero_image.height
-        }}
-      {%- else %}
-        <div class="drift-hero__product-placeholder">
-          [Hero image: Drift 10" Premium Wood on nightstand<br>in calm, dimly lit bedroom — lifestyle photo]
-        </div>
-      {%- endif %}
+      {%- comment %} Guarantee bar — Free Shipping + 30-Day Guarantee {%- endcomment %}
+      <div class="drift-hero__guarantee" aria-label="Shopping guarantees">
+        <span class="drift-hero__guarantee-item">
+          <svg class="drift-hero__guarantee-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="1" y="9" width="14" height="6" rx="1" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M3 9V6C3 4.34315 4.34315 3 6 3H10C11.6569 3 13 4.34315 13 6V9" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M6 6H10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+          Free Shipping
+        </span>
+        <span class="drift-hero__guarantee-item">
+          <svg class="drift-hero__guarantee-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M8 1.5L13.5 3.5V8C13.5 11.0376 11.0376 13.5 8 14.5C4.9624 13.5 2.5 11.0376 2.5 8V3.5L8 1.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+            <path d="M5.5 8L7 9.5L10.5 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          30-Day Guarantee
+        </span>
+      </div>
 
     </div>
 
@@ -110,12 +181,6 @@
     },
     {
       "type": "text",
-      "id": "eyebrow",
-      "label": "Eyebrow label",
-      "default": "Mental Health Awareness Month 2026"
-    },
-    {
-      "type": "text",
       "id": "headline",
       "label": "Headline (H1)",
       "default": "Your good day starts here."
@@ -134,39 +199,38 @@
     },
     {
       "type": "header",
-      "content": "CTAs"
+      "content": "CTA"
     },
     {
       "type": "text",
       "id": "cta_primary_text",
-      "label": "Primary CTA text",
-      "default": "Shop Drift"
+      "label": "CTA text",
+      "default": "Shop"
     },
     {
       "type": "url",
       "id": "cta_primary_url",
-      "label": "Primary CTA URL"
-    },
-    {
-      "type": "text",
-      "id": "cta_secondary_text",
-      "label": "Secondary CTA text",
-      "default": "Find Your Size"
-    },
-    {
-      "type": "url",
-      "id": "cta_secondary_url",
-      "label": "Secondary CTA URL (anchor to product section)"
+      "label": "CTA URL"
     },
     {
       "type": "header",
-      "content": "Product Image"
+      "content": "Hero Image",
+      "info": "Use STS-400_0931.jpg from Air: https://app.air.inc/a/c8d305320 — lifestyle shot, not studio. Min 900×1100px."
     },
     {
       "type": "image_picker",
       "id": "hero_image",
-      "label": "Hero product image",
-      "info": "Recommended: Drift 10\" on nightstand in calm, dimly lit bedroom. Lifestyle, not studio. Min 900×1100px."
+      "label": "Hero lifestyle image"
+    },
+    {
+      "type": "header",
+      "content": "Hero Video (optional — overrides image if set)"
+    },
+    {
+      "type": "text",
+      "id": "video_url",
+      "label": "Video URL",
+      "info": "Accepts Shopify-hosted video URL or external MP4. Use '07- HOW TO AT NICKS_1.mp4' from Air: https://app.air.inc/a/c699e1403 — Leave blank to show image only."
     }
   ],
   "presets": [

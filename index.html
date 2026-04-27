@@ -7,11 +7,29 @@
   <meta name="description" content="Drift is the app-controlled ambient light clinically recognized for reducing stress, deepening calm, and turning any room into a place your mind can rest.">
   <style>
 /**
- * drift-mham.css
+ * drift-mham.css (inlined for static preview)
  * Homedics Drift × Mental Health Awareness Month 2026
  * Campaign: "Your Good Day Starts Here"
  * Built by: Everything Bagel Partners / Jarvis
+ *
+ * Jeff Laine design feedback applied April 2026:
+ * - Kansas font (system serif fallback in preview — Kansas woff2 files loaded in Shopify via @font-face)
+ * - Section padding reduced ~2/3 (96px → 32px desktop, 64px → 22px mobile)
+ * - Hero: image LEFT, copy RIGHT; single "Shop" CTA; guarantee bar; +20% glow opacity
+ * - Hero: eyebrow text removed (badge bar kept)
+ * - Product grid: SVG checkmarks replace emoji/dot bullets; sale tags removed from cards 2+3
+ * - App section: lifestyle image LEFT, copy RIGHT (replaces phone mockup)
  */
+
+/* ============================================================
+   KANSAS FONT — Static HTML preview
+   NOTE: In the Shopify theme, @font-face declarations are output
+   by drift-hero.liquid using Shopify asset_url filter.
+   Font files (Kansas-Regular/Bold/BoldItalic/Italic.woff2) must be
+   uploaded to theme assets. Reference:
+   https://drive.google.com/open?id=1uMjmmU9DGtSxhTHojfy2pgvuX7mGACLM
+   Below uses system serif fallback for this static preview.
+   ============================================================ */
 
 /* ============================================================
    CSS CUSTOM PROPERTIES — DESIGN TOKENS
@@ -28,10 +46,15 @@
   --drift-card-dark:  #1C1C24;
   --drift-border:     rgba(255, 255, 255, 0.08);
   --drift-off-white:  #E8E6E0;
+
   --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --font-serif: Georgia, 'Times New Roman', Times, serif;
-  --section-padding-desktop: 96px 48px;
-  --section-padding-mobile:  64px 24px;
+  /* Kansas — commercial font (Latinotype). Falls back to serif in static preview. */
+  --font-kansas: 'Kansas', Georgia, 'Times New Roman', serif;
+
+  /* Padding reduced ~2/3 per Jeff feedback */
+  --section-padding-desktop: 32px 48px;
+  --section-padding-mobile:  22px 24px;
   --container-max:           1200px;
   --transition-standard: 0.3s ease;
   --transition-slow:     0.6s ease;
@@ -122,6 +145,7 @@ body { margin: 0; padding: 0; }
   background: var(--drift-deep-navy);
   transform: translateY(-1px);
 }
+.drift-btn--full { width: 100%; }
 
 /* ============================================================
    SECTION 1: HERO
@@ -162,6 +186,7 @@ body { margin: 0; padding: 0; }
   letter-spacing: 0.04em;
 }
 
+/* Image LEFT, copy RIGHT — Jeff feedback */
 .drift-hero__inner {
   flex: 1;
   display: grid;
@@ -177,6 +202,7 @@ body { margin: 0; padding: 0; }
 .drift-hero__copy { z-index: 2; position: relative; }
 
 .drift-hero__headline {
+  font-family: var(--font-kansas);
   font-size: clamp(42px, 6vw, 72px);
   font-weight: 800;
   color: #FFFFFF;
@@ -207,6 +233,32 @@ body { margin: 0; padding: 0; }
   flex-wrap: wrap;
 }
 
+/* Guarantee bar — below CTA */
+.drift-hero__guarantee {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.drift-hero__guarantee-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.drift-hero__guarantee-icon {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  color: rgba(255, 255, 255, 0.45);
+}
+
 .drift-hero__product {
   position: relative;
   display: flex;
@@ -225,6 +277,7 @@ body { margin: 0; padding: 0; }
   border-radius: 12px;
 }
 
+/* RGBIC glow — opacity increased 20% (0.45 → 0.54) per Jeff feedback */
 .drift-hero__glow {
   position: absolute;
   inset: -20%;
@@ -232,7 +285,7 @@ body { margin: 0; padding: 0; }
   z-index: 1;
   animation: driftGlowCycle 30s ease-in-out infinite;
   filter: blur(80px);
-  opacity: 0.45;
+  opacity: 0.54;
 }
 
 @keyframes driftGlowCycle {
@@ -243,6 +296,26 @@ body { margin: 0; padding: 0; }
   66%  { background: radial-gradient(ellipse at center, #1D8A4C 0%, #2DB8DB 40%, transparent 70%); }
   83%  { background: radial-gradient(ellipse at center, #4B2DDB 0%, #1D8A4C 40%, transparent 70%); }
   100% { background: radial-gradient(ellipse at center, #4B2DDB 0%, #1D8A4C 40%, transparent 70%); }
+}
+
+/* Video hero placeholder (static preview) */
+.drift-hero__video-placeholder {
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 16/9;
+  background: var(--drift-card-dark);
+  border-radius: 12px;
+  border: 1px dashed rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.35);
+  font-size: 13px;
+  text-align: center;
+  padding: 24px;
+  position: relative;
+  z-index: 2;
+  line-height: 1.6;
 }
 
 /* ============================================================
@@ -260,7 +333,7 @@ body { margin: 0; padding: 0; }
 }
 
 .drift-insight__quote {
-  font-family: var(--font-serif);
+  font-family: var(--font-kansas);
   font-style: italic;
   font-size: clamp(28px, 4vw, 48px);
   line-height: 1.35;
@@ -294,10 +367,11 @@ body { margin: 0; padding: 0; }
 
 .drift-products__header {
   text-align: center;
-  margin-bottom: 64px;
+  margin-bottom: 24px;
 }
 
 .drift-products__headline {
+  font-family: var(--font-kansas);
   font-size: clamp(32px, 4vw, 48px);
   font-weight: 700;
   color: var(--drift-charcoal);
@@ -368,6 +442,7 @@ body { margin: 0; padding: 0; }
   color: #FFFFFF;
 }
 
+/* sale tag class kept for potential future use but not used on cards 2/3 per Jeff feedback */
 .drift-product-card__tag--sale {
   background: var(--drift-sale-red);
   color: #FFFFFF;
@@ -390,6 +465,7 @@ body { margin: 0; padding: 0; }
 }
 
 .drift-product-card__headline {
+  font-family: var(--font-kansas);
   font-size: 24px;
   font-weight: 700;
   color: var(--drift-charcoal);
@@ -423,12 +499,12 @@ body { margin: 0; padding: 0; }
   gap: 8px;
 }
 
+/* SVG checkmark in MHA Green — replaces dot bullet per Jeff feedback */
 .drift-product-card__feature::before {
   content: '';
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--drift-mha-green);
+  width: 16px;
+  height: 16px;
+  background: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2.5 8L6 11.5L13.5 4' stroke='%231D8A4C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center/contain;
   flex-shrink: 0;
 }
 
@@ -445,7 +521,10 @@ body { margin: 0; padding: 0; }
   color: var(--drift-charcoal);
 }
 
-.drift-product-card__price--sale { color: var(--drift-sale-red); }
+.drift-product-card__price--sale {
+  color: var(--drift-sale-red);
+  font-size: 26px;
+}
 
 .drift-product-card__price-compare {
   font-size: 16px;
@@ -463,10 +542,11 @@ body { margin: 0; padding: 0; }
 
 .drift-endorsements__header {
   text-align: center;
-  margin-bottom: 64px;
+  margin-bottom: 24px;
 }
 
 .drift-endorsements__headline {
+  font-family: var(--font-kansas);
   font-size: clamp(28px, 4vw, 40px);
   font-weight: 700;
   color: #FFFFFF;
@@ -487,7 +567,7 @@ body { margin: 0; padding: 0; }
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 24px;
-  margin-bottom: 64px;
+  margin-bottom: 48px;
 }
 
 .drift-quote-card {
@@ -500,7 +580,6 @@ body { margin: 0; padding: 0; }
   gap: 24px;
 }
 
-/* Placeholder warning styling */
 .drift-quote-card--placeholder {
   border-color: rgba(217, 48, 37, 0.3);
   background: rgba(217, 48, 37, 0.04);
@@ -562,7 +641,7 @@ body { margin: 0; padding: 0; }
 
 .drift-endorsements__press {
   border-top: 1px solid var(--drift-border);
-  padding-top: 48px;
+  padding-top: 32px;
   text-align: center;
 }
 
@@ -572,7 +651,7 @@ body { margin: 0; padding: 0; }
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.4);
-  margin: 0 0 32px;
+  margin: 0 0 24px;
 }
 
 .drift-endorsements__press-logos {
@@ -596,6 +675,7 @@ body { margin: 0; padding: 0; }
 
 /* ============================================================
    SECTION 5: APP EXPERIENCE
+   Jeff feedback: lifestyle image LEFT, copy RIGHT
    ============================================================ */
 .drift-app {
   background: var(--drift-deep-navy);
@@ -606,78 +686,48 @@ body { margin: 0; padding: 0; }
 .drift-app__inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  gap: 56px;
   align-items: center;
   max-width: var(--container-max);
   margin: 0 auto;
 }
 
-.drift-app__mockup {
+/* Lifestyle image (left column) */
+.drift-app__lifestyle {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.drift-app__glow-bg {
-  position: absolute;
-  inset: -30%;
-  border-radius: 50%;
-  animation: driftGlowCycle 20s ease-in-out infinite;
-  filter: blur(60px);
-  opacity: 0.3;
-  z-index: 0;
+.drift-app__lifestyle-img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.4);
 }
 
-.drift-app__phone-placeholder {
-  width: 260px;
-  aspect-ratio: 9/18;
+.drift-app__lifestyle-placeholder {
+  width: 100%;
+  aspect-ratio: 4/5;
   background: var(--drift-card-dark);
-  border-radius: 32px;
-  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 16px;
+  border: 1px dashed rgba(255,255,255,0.15);
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: rgba(255,255,255,0.35);
+  color: rgba(255,255,255,0.3);
   font-size: 13px;
   text-align: center;
-  padding: 32px 24px;
-  position: relative;
-  z-index: 1;
-  gap: 16px;
-  box-shadow: 0 40px 100px rgba(0,0,0,0.5);
-}
-
-.drift-app__phone-screen {
-  width: 100%;
-  background: rgba(29, 138, 76, 0.12);
-  border-radius: 16px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.drift-app__phone-bar {
-  height: 6px;
-  border-radius: 3px;
-  background: rgba(29, 138, 76, 0.5);
-}
-
-.drift-app__phone-bar:nth-child(2) { width: 75%; background: rgba(255,255,255,0.15); }
-.drift-app__phone-bar:nth-child(3) { width: 55%; background: rgba(255,255,255,0.1); }
-
-.drift-app__phone-label {
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.3);
+  padding: 24px;
+  line-height: 1.6;
 }
 
 .drift-app__copy { color: #FFFFFF; }
 
 .drift-app__headline {
+  font-family: var(--font-kansas);
   font-size: clamp(30px, 3.5vw, 44px);
   font-weight: 700;
   color: #FFFFFF;
@@ -763,6 +813,7 @@ body { margin: 0; padding: 0; }
 }
 
 .drift-gifting__headline {
+  font-family: var(--font-kansas);
   font-size: clamp(32px, 4vw, 52px);
   font-weight: 700;
   color: var(--drift-charcoal);
@@ -864,6 +915,7 @@ body { margin: 0; padding: 0; }
 }
 
 .drift-final-cta__headline {
+  font-family: var(--font-kansas);
   font-size: clamp(34px, 5vw, 60px);
   font-weight: 800;
   color: #FFFFFF;
@@ -925,9 +977,7 @@ body { margin: 0; padding: 0; }
   font-family: var(--font-sans);
 }
 
-.drift-preview-banner__text strong {
-  color: #FFFFFF;
-}
+.drift-preview-banner__text strong { color: #FFFFFF; }
 
 .drift-preview-banner__note {
   font-size: 12px;
@@ -939,33 +989,42 @@ body { margin: 0; padding: 0; }
    RESPONSIVE
    ============================================================ */
 @media (max-width: 768px) {
+  /* Hero — image first in DOM = top on mobile by default; copy pushed above via order */
   .drift-hero__inner {
     grid-template-columns: 1fr;
-    padding: 40px 24px 56px;
-    gap: 40px;
+    padding: 40px 24px 40px;
+    gap: 32px;
   }
-  .drift-hero__product { order: 2; min-height: 280px; }
+  .drift-hero__product { order: 2; min-height: 260px; }
   .drift-hero__copy { order: 1; }
   .drift-hero__ctas { flex-direction: column; }
   .drift-hero__ctas .drift-btn { width: 100%; text-align: center; }
+  .drift-hero__guarantee { gap: 16px; }
+
   .drift-insight { padding: var(--section-padding-mobile); }
+
   .drift-products { padding: var(--section-padding-mobile); }
-  .drift-products__header { margin-bottom: 40px; }
+  .drift-products__header { margin-bottom: 20px; }
   .drift-products__grid { grid-template-columns: 1fr; gap: 20px; }
   .drift-product-card__body { padding: 20px; }
+
   .drift-endorsements { padding: var(--section-padding-mobile); }
   .drift-endorsements__grid { grid-template-columns: 1fr; }
   .drift-endorsements__press-logos { gap: 28px; }
+
   .drift-app { padding: var(--section-padding-mobile); }
-  .drift-app__inner { grid-template-columns: 1fr; gap: 48px; }
+  .drift-app__inner { grid-template-columns: 1fr; gap: 32px; }
   .drift-app__ctas { flex-direction: column; }
   .drift-app__ctas .drift-btn { width: 100%; }
+
   .drift-gifting { padding: var(--section-padding-mobile); }
-  .drift-gifting__inner { grid-template-columns: 1fr; gap: 40px; }
+  .drift-gifting__inner { grid-template-columns: 1fr; gap: 32px; }
   .drift-gifting__img-wrap { aspect-ratio: 16/9; order: -1; }
+
   .drift-final-cta { padding: var(--section-padding-mobile); }
   .drift-final-cta__ctas { flex-direction: column; align-items: center; }
   .drift-final-cta__ctas .drift-btn { width: 100%; max-width: 360px; }
+
   .drift-preview-banner { padding: 10px 16px; }
   .drift-preview-banner__note { display: none; }
 }
@@ -973,12 +1032,10 @@ body { margin: 0; padding: 0; }
 @media (max-width: 480px) {
   .drift-hero__badge-bar { padding: 10px 16px; }
   .drift-quote-card { padding: 24px; }
-  .drift-app__phone-placeholder { width: 220px; }
 }
 
 @media print {
   .drift-hero__glow,
-  .drift-app__glow-bg,
   .drift-final-cta__glow,
   .drift-preview-banner { display: none; }
 }
@@ -993,10 +1050,10 @@ body { margin: 0; padding: 0; }
   <div class="drift-preview-banner__left">
     <span class="drift-preview-banner__badge">Preview</span>
     <span class="drift-preview-banner__text">
-      <strong>Homedics Drift × MHAM 2026</strong> — Static HTML preview for team review
+      <strong>Homedics Drift × MHAM 2026</strong> — Jeff Laine design feedback applied Apr 2026
     </span>
   </div>
-  <span class="drift-preview-banner__note">⚠️ Doctor quotes pending Homedics approval · Product images from live CDN · Not for public distribution</span>
+  <span class="drift-preview-banner__note">⚠️ Doctor quotes pending approval · Kansas font = system serif fallback in preview · Not for public distribution</span>
 </div>
 
 <!-- ============================================================
@@ -1006,27 +1063,21 @@ body { margin: 0; padding: 0; }
 
   <!-- ══════════════════════════════════
        SECTION 1: HERO
+       Jeff changes: image LEFT / copy RIGHT, single "Shop" CTA,
+       guarantee bar, removed eyebrow text, glow +20% opacity
        ══════════════════════════════════ -->
   <section class="drift-hero">
-    <!-- MHA badge bar -->
+    <!-- MHA badge bar — kept -->
     <div class="drift-hero__badge-bar">
       <span class="drift-hero__badge-dot"></span>
       <span class="drift-hero__badge-text">Honoring Mental Health Awareness Month — May 2026</span>
     </div>
 
-    <!-- Main hero content -->
     <div class="drift-hero__inner">
-      <div class="drift-hero__copy">
-        <span class="drift-eyebrow drift-eyebrow--light">Mental Health Awareness Month 2026</span>
-        <h1 class="drift-hero__headline">Your good day<br>starts here.</h1>
-        <p class="drift-hero__subhead">Drift is the app-controlled ambient light clinically recognized for reducing stress, deepening calm, and turning any room into a place your mind can rest.</p>
-        <p class="drift-hero__body">Doctor-recommended. App-controlled. Yours.</p>
-        <div class="drift-hero__ctas">
-          <a href="/pages/drift" class="drift-btn drift-btn--primary">Shop Drift</a>
-          <a href="#drift-products" class="drift-btn drift-btn--secondary">Find Your Size</a>
-        </div>
-      </div>
 
+      <!-- LEFT: Product image with RGBIC glow -->
+      <!-- Image: STS-400_0931.jpg from Air (https://app.air.inc/a/c8d305320) -->
+      <!-- Video: "07- HOW TO AT NICKS_1.mp4" (https://app.air.inc/a/c699e1403) — add via video_url setting -->
       <div class="drift-hero__product">
         <div class="drift-hero__glow"></div>
         <img
@@ -1035,7 +1086,47 @@ body { margin: 0; padding: 0; }
           class="drift-hero__product-img"
           loading="eager"
         >
+        <!-- Video placeholder (shows when video_url is set in Shopify):
+        <div class="drift-hero__video-placeholder">
+          🎬 Video: 07- HOW TO AT NICKS_1<br>
+          Upload via Air: https://app.air.inc/a/c699e1403<br>
+          Set in section settings as video_url
+        </div>
+        -->
       </div>
+
+      <!-- RIGHT: Copy -->
+      <div class="drift-hero__copy">
+        <!-- Eyebrow text REMOVED per Jeff feedback (badge bar above is sufficient) -->
+        <h1 class="drift-hero__headline">Your good day<br>starts here.</h1>
+        <p class="drift-hero__subhead">Drift is the app-controlled ambient light clinically recognized for reducing stress, deepening calm, and turning any room into a place your mind can rest.</p>
+        <p class="drift-hero__body">Doctor-recommended. App-controlled. Yours.</p>
+
+        <!-- Single CTA — "Find Your Size" removed per Jeff feedback -->
+        <div class="drift-hero__ctas">
+          <a href="/pages/drift" class="drift-btn drift-btn--primary">Shop</a>
+        </div>
+
+        <!-- Guarantee bar -->
+        <div class="drift-hero__guarantee">
+          <span class="drift-hero__guarantee-item">
+            <svg class="drift-hero__guarantee-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="1" y="9" width="14" height="6" rx="1" stroke="currentColor" stroke-width="1.4"/>
+              <path d="M3 9V6C3 4.34315 4.34315 3 6 3H10C11.6569 3 13 4.34315 13 6V9" stroke="currentColor" stroke-width="1.4"/>
+              <path d="M6 6H10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+            Free Shipping
+          </span>
+          <span class="drift-hero__guarantee-item">
+            <svg class="drift-hero__guarantee-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M8 1.5L13.5 3.5V8C13.5 11.0376 11.0376 13.5 8 14.5C4.9624 13.5 2.5 11.0376 2.5 8V3.5L8 1.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+              <path d="M5.5 8L7 9.5L10.5 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            30-Day Guarantee
+          </span>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -1058,6 +1149,8 @@ body { margin: 0; padding: 0; }
 
   <!-- ══════════════════════════════════
        SECTION 3: PRODUCT GRID
+       Jeff changes: SVG checkmarks (not emoji), sale tags removed
+       from cards 2+3 — pricing block shows strikethrough
        ══════════════════════════════════ -->
   <section class="drift-products" id="drift-products">
     <div class="drift-container">
@@ -1069,7 +1162,7 @@ body { margin: 0; padding: 0; }
 
       <div class="drift-products__grid">
 
-        <!-- Card 1: Drift 10" -->
+        <!-- Card 1: Drift 10" — "Most Popular" tag kept as-is -->
         <div class="drift-product-card">
           <div class="drift-product-card__img-wrap">
             <img
@@ -1084,6 +1177,7 @@ body { margin: 0; padding: 0; }
             <p class="drift-product-card__name">Drift 10" Premium Wood</p>
             <h3 class="drift-product-card__headline">Where calm begins.</h3>
             <p class="drift-product-card__desc">The drift 10" is your daily ritual — compact enough for a bedside table or desk, powerful enough to shift your entire headspace. WiFi-enabled so you're always in control, even from another room. RGBIC Smart Lights mean no two moments look the same.</p>
+            <!-- SVG checkmarks via CSS ::before -->
             <ul class="drift-product-card__features">
               <li class="drift-product-card__feature">WiFi-enabled</li>
               <li class="drift-product-card__feature">RGBIC Smart Lights</li>
@@ -1097,7 +1191,7 @@ body { margin: 0; padding: 0; }
           </div>
         </div>
 
-        <!-- Card 2: Drift 16" -->
+        <!-- Card 2: Drift 16" — "On Sale" tag REMOVED per Jeff; pricing shows strikethrough -->
         <div class="drift-product-card">
           <div class="drift-product-card__img-wrap">
             <img
@@ -1106,7 +1200,7 @@ body { margin: 0; padding: 0; }
               class="drift-product-card__img"
               loading="lazy"
             >
-            <span class="drift-product-card__tag drift-product-card__tag--sale">On Sale</span>
+            <!-- Sale tag removed — pricing block below shows strikethrough original price -->
           </div>
           <div class="drift-product-card__body">
             <p class="drift-product-card__name">Drift 16"</p>
@@ -1118,15 +1212,16 @@ body { margin: 0; padding: 0; }
               <li class="drift-product-card__feature">App controlled</li>
               <li class="drift-product-card__feature">Ideal for living rooms</li>
             </ul>
+            <!-- Strikethrough original + sale price (bold red) per Jeff feedback -->
             <div class="drift-product-card__pricing">
-              <span class="drift-product-card__price drift-product-card__price--sale">On Sale</span>
               <span class="drift-product-card__price-compare">$399.99</span>
+              <span class="drift-product-card__price drift-product-card__price--sale">Sale Price</span>
             </div>
             <a href="/products/drift-16" class="drift-btn drift-btn--dark drift-btn--full">Shop Drift 16"</a>
           </div>
         </div>
 
-        <!-- Card 3: Drift 21" -->
+        <!-- Card 3: Drift 21" — "On Sale" tag REMOVED per Jeff; pricing shows strikethrough -->
         <div class="drift-product-card">
           <div class="drift-product-card__img-wrap">
             <img
@@ -1135,7 +1230,7 @@ body { margin: 0; padding: 0; }
               class="drift-product-card__img"
               loading="lazy"
             >
-            <span class="drift-product-card__tag drift-product-card__tag--sale">On Sale</span>
+            <!-- Sale tag removed — pricing block below shows strikethrough original price -->
           </div>
           <div class="drift-product-card__body">
             <p class="drift-product-card__name">Drift 21"</p>
@@ -1147,9 +1242,10 @@ body { margin: 0; padding: 0; }
               <li class="drift-product-card__feature">App controlled</li>
               <li class="drift-product-card__feature">Perfect for gifting</li>
             </ul>
+            <!-- Strikethrough original + sale price (bold red) per Jeff feedback -->
             <div class="drift-product-card__pricing">
-              <span class="drift-product-card__price drift-product-card__price--sale">On Sale</span>
               <span class="drift-product-card__price-compare">$499.99</span>
+              <span class="drift-product-card__price drift-product-card__price--sale">Sale Price</span>
             </div>
             <a href="/products/drift-21" class="drift-btn drift-btn--dark drift-btn--full">Shop Drift 21"</a>
           </div>
@@ -1171,50 +1267,40 @@ body { margin: 0; padding: 0; }
       </div>
 
       <div class="drift-endorsements__grid">
-
-        <!-- Quote 1 -->
         <div class="drift-quote-card drift-quote-card--placeholder">
           <span class="drift-quote-card__placeholder-badge">⚠ Pending Approval</span>
           <p class="drift-quote-card__quote drift-quote-card__quote--pending">INSERT APPROVED QUOTE — Dr. Schwartz — re: stress relief / mindfulness. Pull verbatim from Homedics asset library before publishing.</p>
           <div class="drift-quote-card__meta">
             <p class="drift-quote-card__name">Dr. [Schwartz — First Name TBD]</p>
-            <p class="drift-quote-card__credential">[Credential — e.g. MD, Clinical Psychologist, Board-Certified]</p>
+            <p class="drift-quote-card__credential">[Credential TBD]</p>
           </div>
         </div>
-
-        <!-- Quote 2 -->
         <div class="drift-quote-card drift-quote-card--placeholder">
           <span class="drift-quote-card__placeholder-badge">⚠ Pending Approval</span>
           <p class="drift-quote-card__quote drift-quote-card__quote--pending">INSERT APPROVED QUOTE — Dr. Rosenstock — re: sleep / ambient light. Pull verbatim from Homedics asset library before publishing.</p>
           <div class="drift-quote-card__meta">
             <p class="drift-quote-card__name">Dr. [Rosenstock — First Name TBD]</p>
-            <p class="drift-quote-card__credential">[Credential — e.g. Sleep Medicine Specialist, MD]</p>
+            <p class="drift-quote-card__credential">[Credential TBD]</p>
           </div>
         </div>
-
-        <!-- Quote 3 -->
         <div class="drift-quote-card drift-quote-card--placeholder">
           <span class="drift-quote-card__placeholder-badge">⚠ Pending Approval</span>
           <p class="drift-quote-card__quote drift-quote-card__quote--pending">INSERT APPROVED QUOTE — Dr. Gonzalez — re: anxiety reduction. Pull verbatim from Homedics asset library before publishing.</p>
           <div class="drift-quote-card__meta">
             <p class="drift-quote-card__name">Dr. [Gonzalez — First Name TBD]</p>
-            <p class="drift-quote-card__credential">[Credential — e.g. Licensed Therapist, Anxiety Specialist]</p>
+            <p class="drift-quote-card__credential">[Credential TBD]</p>
           </div>
         </div>
-
-        <!-- Quote 4 -->
         <div class="drift-quote-card drift-quote-card--placeholder">
           <span class="drift-quote-card__placeholder-badge">⚠ Pending Approval</span>
           <p class="drift-quote-card__quote drift-quote-card__quote--pending">INSERT APPROVED QUOTE — Dr. Nieves — re: mindfulness ritual. Pull verbatim from Homedics asset library before publishing.</p>
           <div class="drift-quote-card__meta">
             <p class="drift-quote-card__name">Dr. [Nieves — First Name TBD]</p>
-            <p class="drift-quote-card__credential">[Credential — e.g. Mindfulness Coach, PsyD]</p>
+            <p class="drift-quote-card__credential">[Credential TBD]</p>
           </div>
         </div>
+      </div>
 
-      </div><!-- /.drift-endorsements__grid -->
-
-      <!-- Press bar -->
       <div class="drift-endorsements__press">
         <p class="drift-endorsements__press-label">As seen in</p>
         <div class="drift-endorsements__press-logos">
@@ -1229,24 +1315,34 @@ body { margin: 0; padding: 0; }
 
   <!-- ══════════════════════════════════
        SECTION 5: APP EXPERIENCE
+       Jeff changes: lifestyle image LEFT, copy RIGHT
+       Image: ST-400-CE_LS3.png from Air (https://app.air.inc/a/ca30e8d92)
+       Alt: ST-180-AW_PDP06.png (https://app.air.inc/a/c6940d172)
        ══════════════════════════════════ -->
   <section class="drift-app">
     <div class="drift-app__inner">
-      <!-- Phone mockup -->
-      <div class="drift-app__mockup">
-        <div class="drift-app__glow-bg"></div>
-        <div class="drift-app__phone-placeholder">
-          <span class="drift-app__phone-label">Homedics Drift App</span>
-          <div class="drift-app__phone-screen">
-            <div class="drift-app__phone-bar"></div>
-            <div class="drift-app__phone-bar"></div>
-            <div class="drift-app__phone-bar"></div>
-          </div>
-          <span style="font-size:11px; color:rgba(255,255,255,0.2); line-height:1.5;">App screenshot<br>— insert from<br>Homedics assets</span>
+
+      <!-- LEFT: Lifestyle image (replaced phone mockup) -->
+      <div class="drift-app__lifestyle">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0703/4116/5241/files/ST-180-WN_PDP01_EN__15460.jpg?v=1752255441"
+          alt="Homedics Drift — lifestyle in home setting"
+          class="drift-app__lifestyle-img"
+          loading="lazy"
+        >
+        <!-- Placeholder if no image uploaded:
+        <div class="drift-app__lifestyle-placeholder">
+          Primary lifestyle image:<br>
+          ST-400-CE_LS3.png from Air<br>
+          https://app.air.inc/a/ca30e8d92<br><br>
+          Alternative:<br>
+          ST-180-AW_PDP06.png<br>
+          https://app.air.inc/a/c6940d172
         </div>
+        -->
       </div>
 
-      <!-- Copy -->
+      <!-- RIGHT: Copy -->
       <div class="drift-app__copy">
         <span class="drift-eyebrow drift-eyebrow--light">The Homedics Drift App</span>
         <h2 class="drift-app__headline">Your calm.<br>Your control.</h2>
@@ -1278,7 +1374,6 @@ body { margin: 0; padding: 0; }
        ══════════════════════════════════ -->
   <section class="drift-gifting">
     <div class="drift-gifting__inner">
-      <!-- Lifestyle image -->
       <div class="drift-gifting__img-wrap">
         <img
           src="https://placehold.co/600x720/EDE8E3/8B7355?text=Lifestyle+Photo%0AMother%27s+Day+Scene%0A%E2%80%94+warm%2C+inviting+home"
@@ -1287,13 +1382,10 @@ body { margin: 0; padding: 0; }
           loading="lazy"
         >
       </div>
-
-      <!-- Copy -->
       <div class="drift-gifting__copy">
         <span class="drift-eyebrow">Mother's Day — May 11, 2026</span>
         <h2 class="drift-gifting__headline">Give her more<br>good days.</h2>
         <p class="drift-gifting__subhead">Mother's Day is May 11. Drift is the gift that keeps giving — every evening, every morning, every quiet moment she finally gets to herself.</p>
-
         <div class="drift-gifting__items">
           <div class="drift-gifting__item">
             <div class="drift-gifting__item-info">
@@ -1317,7 +1409,6 @@ body { margin: 0; padding: 0; }
             <span class="drift-gifting__item-badge drift-gifting__item-badge--sale">On Sale</span>
           </div>
         </div>
-
         <a href="/pages/drift" class="drift-btn drift-btn--dark">Shop Mother's Day Gifts</a>
       </div>
     </div>
