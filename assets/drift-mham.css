@@ -32,8 +32,8 @@
   --font-kansas: 'Kansas', Georgia, 'Times New Roman', serif;
 
   /* Spacing — reduced by ~2/3 per Jeff Laine feedback Apr 2026 */
-  --section-padding-desktop: 11px 48px;
-  --section-padding-mobile:  7px 24px;
+  --section-padding-desktop: 80px 48px;
+  --section-padding-mobile:  56px 24px;
   --container-max:           1200px;
 
   /* Transitions */
