@@ -1,0 +1,178 @@
+{% comment %}
+  drift-hero.liquid
+  Section 1 — Hero (Dark, Full-Bleed)
+  Homedics Drift × Mental Health Awareness Month 2026
+
+  Includes:
+  - MHA badge ribbon (top)
+  - Full-bleed dark hero with left copy + right product image
+  - Subtle RGBIC CSS glow animation behind product
+  - Primary + secondary CTAs
+{% endcomment %}
+
+{{ 'drift-mham.css' | asset_url | stylesheet_tag }}
+
+<section class="drift-lp drift-hero" id="drift-hero">
+
+  {%- comment %} MHA Badge ribbon {%- endcomment %}
+  {% if section.settings.badge_enabled %}
+  <div class="drift-hero__badge-bar">
+    <span aria-hidden="true">🟢</span>
+    <span class="drift-hero__badge-text">{{ section.settings.badge_text }}</span>
+  </div>
+  {% endif %}
+
+  <div class="drift-hero__inner drift-container">
+
+    {%- comment %} LEFT: Copy block {%- endcomment %}
+    <div class="drift-hero__copy">
+
+      <span class="drift-eyebrow">{{ section.settings.eyebrow }}</span>
+
+      <h1 class="drift-hero__headline">{{ section.settings.headline }}</h1>
+
+      <p class="drift-hero__subhead">{{ section.settings.subheadline }}</p>
+
+      <p class="drift-hero__body">{{ section.settings.body_text }}</p>
+
+      <div class="drift-hero__ctas">
+        <a
+          href="{{ section.settings.cta_primary_url }}"
+          class="drift-btn drift-btn--primary"
+          aria-label="{{ section.settings.cta_primary_text }}"
+        >
+          {{ section.settings.cta_primary_text }}
+        </a>
+        <a
+          href="{{ section.settings.cta_secondary_url }}"
+          class="drift-btn drift-btn--secondary"
+          aria-label="{{ section.settings.cta_secondary_text }}"
+        >
+          {{ section.settings.cta_secondary_text }}
+        </a>
+      </div>
+
+    </div>
+
+    {%- comment %} RIGHT: Product image with glow animation {%- endcomment %}
+    <div class="drift-hero__product">
+
+      {%- comment %} RGBIC animated glow — purely CSS, no JS {%- endcomment %}
+      <div class="drift-hero__glow" aria-hidden="true"></div>
+
+      {%- if section.settings.hero_image != blank %}
+        {{ section.settings.hero_image
+          | image_url: width: 900
+          | image_tag:
+            class: 'drift-hero__product-img',
+            alt: section.settings.hero_image.alt | default: 'Homedics Drift 10 Premium Wood — ambient light diffuser',
+            loading: 'eager',
+            width: section.settings.hero_image.width,
+            height: section.settings.hero_image.height
+        }}
+      {%- else %}
+        <div class="drift-hero__product-placeholder">
+          [Hero image: Drift 10" Premium Wood on nightstand<br>in calm, dimly lit bedroom — lifestyle photo]
+        </div>
+      {%- endif %}
+
+    </div>
+
+  </div>
+
+</section>
+
+{% schema %}
+{
+  "name": "Drift — Hero",
+  "tag": "section",
+  "class": "shopify-section--drift-hero",
+  "settings": [
+    {
+      "type": "header",
+      "content": "MHA Badge"
+    },
+    {
+      "type": "checkbox",
+      "id": "badge_enabled",
+      "label": "Show MHA badge ribbon",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text",
+      "default": "Honoring Mental Health Awareness Month — May 2026"
+    },
+    {
+      "type": "header",
+      "content": "Hero Copy"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow label",
+      "default": "Mental Health Awareness Month 2026"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline (H1)",
+      "default": "Your good day starts here."
+    },
+    {
+      "type": "textarea",
+      "id": "subheadline",
+      "label": "Subheadline",
+      "default": "Drift is the app-controlled ambient light clinically recognized for reducing stress, deepening calm, and turning any room into a place your mind can rest."
+    },
+    {
+      "type": "text",
+      "id": "body_text",
+      "label": "Body text (1 line)",
+      "default": "Doctor-recommended. App-controlled. Yours."
+    },
+    {
+      "type": "header",
+      "content": "CTAs"
+    },
+    {
+      "type": "text",
+      "id": "cta_primary_text",
+      "label": "Primary CTA text",
+      "default": "Shop Drift"
+    },
+    {
+      "type": "url",
+      "id": "cta_primary_url",
+      "label": "Primary CTA URL"
+    },
+    {
+      "type": "text",
+      "id": "cta_secondary_text",
+      "label": "Secondary CTA text",
+      "default": "Find Your Size"
+    },
+    {
+      "type": "url",
+      "id": "cta_secondary_url",
+      "label": "Secondary CTA URL (anchor to product section)"
+    },
+    {
+      "type": "header",
+      "content": "Product Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero product image",
+      "info": "Recommended: Drift 10\" on nightstand in calm, dimly lit bedroom. Lifestyle, not studio. Min 900×1100px."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Drift — Hero"
+    }
+  ]
+}
+{% endschema %}

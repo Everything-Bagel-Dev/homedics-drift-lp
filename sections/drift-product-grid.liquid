@@ -1,0 +1,547 @@
+{% comment %}
+  drift-product-grid.liquid
+  Section 3 — Product Comparison Grid
+  Homedics Drift × Mental Health Awareness Month 2026
+
+  Includes:
+  - Section headline + subhead
+  - 3 product cards (Drift 10" / 16" / 21")
+  - Live Shopify product objects for pricing/availability
+  - Tag pills: Most Popular (green) / On Sale (red)
+  - Feature bullet lists
+  - Hover: card lifts, glow brightens
+  - Anchor: id="drift-products"
+{% endcomment %}
+
+{{ 'drift-mham.css' | asset_url | stylesheet_tag }}
+
+<section class="drift-lp drift-products" id="drift-products">
+  <div class="drift-container">
+
+    <div class="drift-products__header">
+      <h2 class="drift-products__headline">{{ section.settings.headline }}</h2>
+      <p class="drift-products__subhead">{{ section.settings.subhead }}</p>
+    </div>
+
+    <div class="drift-products__grid">
+
+      {%- comment %} ======= CARD 1: Drift 10" Premium Wood ======= {%- endcomment %}
+      {%- assign product_1 = all_products[section.settings.product_1_handle] %}
+      <div class="drift-product-card">
+
+        <div class="drift-product-card__img-wrap">
+          {%- if section.settings.product_1_image != blank %}
+            {{ section.settings.product_1_image
+              | image_url: width: 700
+              | image_tag:
+                class: 'drift-product-card__img',
+                alt: section.settings.product_1_image.alt | default: 'Homedics Drift 10 Premium Wood',
+                loading: 'lazy',
+                width: 700
+            }}
+          {%- elsif product_1.featured_image %}
+            {{ product_1.featured_image
+              | image_url: width: 700
+              | image_tag:
+                class: 'drift-product-card__img',
+                alt: product_1.featured_image.alt | default: product_1.title,
+                loading: 'lazy',
+                width: 700
+            }}
+          {%- else %}
+            <div class="drift-product-card__img-placeholder">
+              [Product image: Drift 10" in bedroom/desk lifestyle setting]
+            </div>
+          {%- endif %}
+
+          <span class="drift-product-card__tag drift-product-card__tag--popular">
+            {{ section.settings.product_1_tag }}
+          </span>
+        </div>
+
+        <div class="drift-product-card__body">
+          <p class="drift-product-card__name">{{ section.settings.product_1_name }}</p>
+          <h3 class="drift-product-card__headline">{{ section.settings.product_1_headline }}</h3>
+          <p class="drift-product-card__desc">{{ section.settings.product_1_desc }}</p>
+
+          <ul class="drift-product-card__features" aria-label="Key features">
+            {%- for i in (1..4) %}
+              {%- assign feature_key = 'product_1_feature_' | append: i %}
+              {%- assign feature_val = section.settings[feature_key] %}
+              {%- if feature_val != blank %}
+                <li class="drift-product-card__feature">{{ feature_val }}</li>
+              {%- endif %}
+            {%- endfor %}
+          </ul>
+
+          <div class="drift-product-card__pricing">
+            {%- if product_1 != blank and product_1.available %}
+              <span class="drift-product-card__price">{{ product_1.price | money }}</span>
+            {%- else %}
+              <span class="drift-product-card__price">{{ section.settings.product_1_price }}</span>
+            {%- endif %}
+          </div>
+
+          <a
+            href="{{ section.settings.product_1_url | default: product_1.url }}"
+            class="drift-btn drift-btn--dark drift-btn--full"
+          >
+            {{ section.settings.product_1_cta }}
+          </a>
+        </div>
+
+      </div>
+
+      {%- comment %} ======= CARD 2: Drift 16" ======= {%- endcomment %}
+      {%- assign product_2 = all_products[section.settings.product_2_handle] %}
+      <div class="drift-product-card">
+
+        <div class="drift-product-card__img-wrap">
+          {%- if section.settings.product_2_image != blank %}
+            {{ section.settings.product_2_image
+              | image_url: width: 700
+              | image_tag:
+                class: 'drift-product-card__img',
+                alt: section.settings.product_2_image.alt | default: 'Homedics Drift 16',
+                loading: 'lazy',
+                width: 700
+            }}
+          {%- elsif product_2.featured_image %}
+            {{ product_2.featured_image
+              | image_url: width: 700
+              | image_tag:
+                class: 'drift-product-card__img',
+                alt: product_2.featured_image.alt | default: product_2.title,
+                loading: 'lazy',
+                width: 700
+            }}
+          {%- else %}
+            <div class="drift-product-card__img-placeholder">
+              [Product image: Drift 16" in living room / shared bedroom]
+            </div>
+          {%- endif %}
+
+          <span class="drift-product-card__tag drift-product-card__tag--sale">
+            {{ section.settings.product_2_tag }}
+          </span>
+        </div>
+
+        <div class="drift-product-card__body">
+          <p class="drift-product-card__name">{{ section.settings.product_2_name }}</p>
+          <h3 class="drift-product-card__headline">{{ section.settings.product_2_headline }}</h3>
+          <p class="drift-product-card__desc">{{ section.settings.product_2_desc }}</p>
+
+          <ul class="drift-product-card__features" aria-label="Key features">
+            {%- for i in (1..4) %}
+              {%- assign feature_key = 'product_2_feature_' | append: i %}
+              {%- assign feature_val = section.settings[feature_key] %}
+              {%- if feature_val != blank %}
+                <li class="drift-product-card__feature">{{ feature_val }}</li>
+              {%- endif %}
+            {%- endfor %}
+          </ul>
+
+          <div class="drift-product-card__pricing">
+            {%- if product_2 != blank and product_2.compare_at_price_max > product_2.price_min %}
+              <span class="drift-product-card__price drift-product-card__price--sale">
+                {{ product_2.price_min | money }}
+              </span>
+              <span class="drift-product-card__price-compare">
+                {{ product_2.compare_at_price_max | money }}
+              </span>
+            {%- elsif product_2 != blank %}
+              <span class="drift-product-card__price">{{ product_2.price_min | money }}</span>
+            {%- else %}
+              <span class="drift-product-card__price drift-product-card__price--sale">
+                {{ section.settings.product_2_price }}
+              </span>
+              {%- if section.settings.product_2_compare_price != blank %}
+                <span class="drift-product-card__price-compare">
+                  {{ section.settings.product_2_compare_price }}
+                </span>
+              {%- endif %}
+            {%- endif %}
+          </div>
+
+          <a
+            href="{{ section.settings.product_2_url | default: product_2.url }}"
+            class="drift-btn drift-btn--dark drift-btn--full"
+          >
+            {{ section.settings.product_2_cta }}
+          </a>
+        </div>
+
+      </div>
+
+      {%- comment %} ======= CARD 3: Drift 21" ======= {%- endcomment %}
+      {%- assign product_3 = all_products[section.settings.product_3_handle] %}
+      <div class="drift-product-card">
+
+        <div class="drift-product-card__img-wrap">
+          {%- if section.settings.product_3_image != blank %}
+            {{ section.settings.product_3_image
+              | image_url: width: 700
+              | image_tag:
+                class: 'drift-product-card__img',
+                alt: section.settings.product_3_image.alt | default: 'Homedics Drift 21',
+                loading: 'lazy',
+                width: 700
+            }}
+          {%- elsif product_3.featured_image %}
+            {{ product_3.featured_image
+              | image_url: width: 700
+              | image_tag:
+                class: 'drift-product-card__img',
+                alt: product_3.featured_image.alt | default: product_3.title,
+                loading: 'lazy',
+                width: 700
+            }}
+          {%- else %}
+            <div class="drift-product-card__img-placeholder">
+              [Product image: Drift 21" as statement piece in living room]
+            </div>
+          {%- endif %}
+
+          <span class="drift-product-card__tag drift-product-card__tag--sale">
+            {{ section.settings.product_3_tag }}
+          </span>
+        </div>
+
+        <div class="drift-product-card__body">
+          <p class="drift-product-card__name">{{ section.settings.product_3_name }}</p>
+          <h3 class="drift-product-card__headline">{{ section.settings.product_3_headline }}</h3>
+          <p class="drift-product-card__desc">{{ section.settings.product_3_desc }}</p>
+
+          <ul class="drift-product-card__features" aria-label="Key features">
+            {%- for i in (1..4) %}
+              {%- assign feature_key = 'product_3_feature_' | append: i %}
+              {%- assign feature_val = section.settings[feature_key] %}
+              {%- if feature_val != blank %}
+                <li class="drift-product-card__feature">{{ feature_val }}</li>
+              {%- endif %}
+            {%- endfor %}
+          </ul>
+
+          <div class="drift-product-card__pricing">
+            {%- if product_3 != blank and product_3.compare_at_price_max > product_3.price_min %}
+              <span class="drift-product-card__price drift-product-card__price--sale">
+                {{ product_3.price_min | money }}
+              </span>
+              <span class="drift-product-card__price-compare">
+                {{ product_3.compare_at_price_max | money }}
+              </span>
+            {%- elsif product_3 != blank %}
+              <span class="drift-product-card__price">{{ product_3.price_min | money }}</span>
+            {%- else %}
+              <span class="drift-product-card__price drift-product-card__price--sale">
+                {{ section.settings.product_3_price }}
+              </span>
+              {%- if section.settings.product_3_compare_price != blank %}
+                <span class="drift-product-card__price-compare">
+                  {{ section.settings.product_3_compare_price }}
+                </span>
+              {%- endif %}
+            {%- endif %}
+          </div>
+
+          <a
+            href="{{ section.settings.product_3_url | default: product_3.url }}"
+            class="drift-btn drift-btn--dark drift-btn--full"
+          >
+            {{ section.settings.product_3_cta }}
+          </a>
+        </div>
+
+      </div>
+
+    </div>{%- comment %} /.drift-products__grid {%- endcomment %}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Drift — Product Grid",
+  "tag": "section",
+  "class": "shopify-section--drift-products",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Header"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Section headline",
+      "default": "Three sizes. One purpose."
+    },
+    {
+      "type": "text",
+      "id": "subhead",
+      "label": "Section subhead",
+      "default": "Find the drift that fits your space — and your day."
+    },
+    {
+      "type": "header",
+      "content": "Card 1 — Drift 10\" Premium Wood"
+    },
+    {
+      "type": "text",
+      "id": "product_1_handle",
+      "label": "Product handle",
+      "default": "drift-10-premium-wood",
+      "info": "Used for live pricing/availability. Must match Shopify product handle exactly."
+    },
+    {
+      "type": "image_picker",
+      "id": "product_1_image",
+      "label": "Card image (overrides product image)",
+      "info": "Lifestyle photo. Recommended: Drift 10\" on bedside table or desk."
+    },
+    {
+      "type": "text",
+      "id": "product_1_name",
+      "label": "Product label (small caps)",
+      "default": "Drift 10\" Premium Wood"
+    },
+    {
+      "type": "text",
+      "id": "product_1_tag",
+      "label": "Tag pill text",
+      "default": "Most Popular"
+    },
+    {
+      "type": "text",
+      "id": "product_1_headline",
+      "label": "Card headline",
+      "default": "Where calm begins."
+    },
+    {
+      "type": "textarea",
+      "id": "product_1_desc",
+      "label": "Card description",
+      "default": "The drift 10\" is your daily ritual — compact enough for a bedside table or desk, powerful enough to shift your entire headspace. WiFi-enabled so you're always in control, even from another room. RGBIC Smart Lights mean no two moments look the same."
+    },
+    {
+      "type": "text",
+      "id": "product_1_feature_1",
+      "label": "Feature 1",
+      "default": "WiFi-enabled"
+    },
+    {
+      "type": "text",
+      "id": "product_1_feature_2",
+      "label": "Feature 2",
+      "default": "RGBIC Smart Lights"
+    },
+    {
+      "type": "text",
+      "id": "product_1_feature_3",
+      "label": "Feature 3",
+      "default": "FSC-certified premium wood"
+    },
+    {
+      "type": "text",
+      "id": "product_1_feature_4",
+      "label": "Feature 4",
+      "default": "Full app control"
+    },
+    {
+      "type": "text",
+      "id": "product_1_price",
+      "label": "Fallback price (if product not found)",
+      "default": "$299.99"
+    },
+    {
+      "type": "text",
+      "id": "product_1_cta",
+      "label": "CTA button text",
+      "default": "Shop Drift 10\""
+    },
+    {
+      "type": "url",
+      "id": "product_1_url",
+      "label": "CTA URL (overrides product URL)"
+    },
+    {
+      "type": "header",
+      "content": "Card 2 — Drift 16\""
+    },
+    {
+      "type": "text",
+      "id": "product_2_handle",
+      "label": "Product handle",
+      "default": "drift-16"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_2_image",
+      "label": "Card image (overrides product image)",
+      "info": "Lifestyle: Drift 16\" in living room or shared bedroom."
+    },
+    {
+      "type": "text",
+      "id": "product_2_name",
+      "label": "Product label",
+      "default": "Drift 16\""
+    },
+    {
+      "type": "text",
+      "id": "product_2_tag",
+      "label": "Tag pill text",
+      "default": "On Sale — Best for Shared Spaces"
+    },
+    {
+      "type": "text",
+      "id": "product_2_headline",
+      "label": "Card headline",
+      "default": "Good days are better shared."
+    },
+    {
+      "type": "textarea",
+      "id": "product_2_desc",
+      "label": "Card description",
+      "default": "The drift 16\" was made for living rooms, shared bedrooms, and the spaces where life happens together. Bigger canvas, bigger calm. Bluetooth-enabled with full RGB lighting for any mood, any moment."
+    },
+    {
+      "type": "text",
+      "id": "product_2_feature_1",
+      "label": "Feature 1",
+      "default": "Bluetooth enabled"
+    },
+    {
+      "type": "text",
+      "id": "product_2_feature_2",
+      "label": "Feature 2",
+      "default": "RGB lights"
+    },
+    {
+      "type": "text",
+      "id": "product_2_feature_3",
+      "label": "Feature 3",
+      "default": "App controlled"
+    },
+    {
+      "type": "text",
+      "id": "product_2_feature_4",
+      "label": "Feature 4",
+      "default": "Ideal for living rooms"
+    },
+    {
+      "type": "text",
+      "id": "product_2_price",
+      "label": "Fallback sale price",
+      "default": "On Sale"
+    },
+    {
+      "type": "text",
+      "id": "product_2_compare_price",
+      "label": "Fallback compare-at price",
+      "default": "$399.99"
+    },
+    {
+      "type": "text",
+      "id": "product_2_cta",
+      "label": "CTA button text",
+      "default": "Shop Drift 16\""
+    },
+    {
+      "type": "url",
+      "id": "product_2_url",
+      "label": "CTA URL (overrides product URL)"
+    },
+    {
+      "type": "header",
+      "content": "Card 3 — Drift 21\""
+    },
+    {
+      "type": "text",
+      "id": "product_3_handle",
+      "label": "Product handle",
+      "default": "drift-21"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_3_image",
+      "label": "Card image (overrides product image)",
+      "info": "Lifestyle: Drift 21\" as statement piece in living/dining room."
+    },
+    {
+      "type": "text",
+      "id": "product_3_name",
+      "label": "Product label",
+      "default": "Drift 21\""
+    },
+    {
+      "type": "text",
+      "id": "product_3_tag",
+      "label": "Tag pill text",
+      "default": "On Sale — The Statement Piece"
+    },
+    {
+      "type": "text",
+      "id": "product_3_headline",
+      "label": "Card headline",
+      "default": "Make space for calm."
+    },
+    {
+      "type": "textarea",
+      "id": "product_3_desc",
+      "label": "Card description",
+      "default": "When you want to transform a room — not just light it — drift 21\" is your answer. The largest canvas in the drift family, delivering immersive RGB ambiance that anchors any space in calm."
+    },
+    {
+      "type": "text",
+      "id": "product_3_feature_1",
+      "label": "Feature 1",
+      "default": "Bluetooth enabled"
+    },
+    {
+      "type": "text",
+      "id": "product_3_feature_2",
+      "label": "Feature 2",
+      "default": "RGB lights"
+    },
+    {
+      "type": "text",
+      "id": "product_3_feature_3",
+      "label": "Feature 3",
+      "default": "App controlled"
+    },
+    {
+      "type": "text",
+      "id": "product_3_feature_4",
+      "label": "Feature 4",
+      "default": "Perfect for gifting"
+    },
+    {
+      "type": "text",
+      "id": "product_3_price",
+      "label": "Fallback sale price",
+      "default": "On Sale"
+    },
+    {
+      "type": "text",
+      "id": "product_3_compare_price",
+      "label": "Fallback compare-at price",
+      "default": "$499.99"
+    },
+    {
+      "type": "text",
+      "id": "product_3_cta",
+      "label": "CTA button text",
+      "default": "Shop Drift 21\""
+    },
+    {
+      "type": "url",
+      "id": "product_3_url",
+      "label": "CTA URL (overrides product URL)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Drift — Product Grid"
+    }
+  ]
+}
+{% endschema %}

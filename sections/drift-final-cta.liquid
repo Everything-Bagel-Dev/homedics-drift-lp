@@ -1,0 +1,112 @@
+{% comment %}
+  drift-final-cta.liquid
+  Section 7 — Final CTA
+  Homedics Drift × Mental Health Awareness Month 2026
+
+  Includes:
+  - Midnight dark background
+  - Ambient RGBIC glow behind content (same CSS keyframes as hero)
+  - Strong closing headline + supporting copy
+  - Primary + secondary CTAs
+  - Closes the page with conviction and calm
+{% endcomment %}
+
+{{ 'drift-mham.css' | asset_url | stylesheet_tag }}
+
+<section class="drift-lp drift-final-cta" id="drift-final-cta">
+
+  {%- comment %} Ambient glow — decorative, CSS only {%- endcomment %}
+  <div class="drift-final-cta__glow" aria-hidden="true"></div>
+
+  <div class="drift-final-cta__inner drift-container">
+
+    {%- if section.settings.eyebrow != blank %}
+      <span class="drift-eyebrow drift-eyebrow--light">{{ section.settings.eyebrow }}</span>
+    {%- endif %}
+
+    <h2 class="drift-final-cta__headline">{{ section.settings.headline }}</h2>
+
+    <p class="drift-final-cta__body">{{ section.settings.body }}</p>
+
+    <div class="drift-final-cta__ctas">
+      <a
+        href="{{ section.settings.cta_primary_url }}"
+        class="drift-btn drift-btn--primary"
+        aria-label="{{ section.settings.cta_primary_text }}"
+      >
+        {{ section.settings.cta_primary_text }}
+      </a>
+      {%- if section.settings.cta_secondary_url != blank %}
+        <a
+          href="{{ section.settings.cta_secondary_url }}"
+          class="drift-btn drift-btn--secondary"
+          aria-label="{{ section.settings.cta_secondary_text }}"
+        >
+          {{ section.settings.cta_secondary_text }}
+        </a>
+      {%- endif %}
+    </div>
+
+  </div>
+
+</section>
+
+{% schema %}
+{
+  "name": "Drift — Final CTA",
+  "tag": "section",
+  "class": "shopify-section--drift-final-cta",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow label (optional)",
+      "default": "Mental Health Awareness Month 2026"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Closing headline",
+      "default": "Your good day is waiting."
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Supporting copy",
+      "default": "Start with five minutes. A room that feels different. A light that moves with you. Drift was built for the small moments that change everything."
+    },
+    {
+      "type": "header",
+      "content": "CTAs"
+    },
+    {
+      "type": "text",
+      "id": "cta_primary_text",
+      "label": "Primary CTA text",
+      "default": "Shop Drift"
+    },
+    {
+      "type": "url",
+      "id": "cta_primary_url",
+      "label": "Primary CTA URL"
+    },
+    {
+      "type": "text",
+      "id": "cta_secondary_text",
+      "label": "Secondary CTA text",
+      "default": "Find Your Size"
+    },
+    {
+      "type": "url",
+      "id": "cta_secondary_url",
+      "label": "Secondary CTA URL",
+      "info": "Leave blank to hide secondary button."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Drift — Final CTA"
+    }
+  ]
+}
+{% endschema %}

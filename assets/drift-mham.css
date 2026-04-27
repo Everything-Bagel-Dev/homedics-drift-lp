@@ -1,0 +1,1062 @@
+/**
+ * drift-mham.css
+ * Homedics Drift × Mental Health Awareness Month 2026
+ * Campaign: "Your Good Day Starts Here"
+ * Built by: Everything Bagel Partners / Jarvis
+ *
+ * Load order: included via snippet reference in each section that needs it.
+ * All custom LP styles live here. Shopify theme styles are untouched.
+ */
+
+/* ============================================================
+   CSS CUSTOM PROPERTIES — DESIGN TOKENS
+   ============================================================ */
+:root {
+  /* Color Palette */
+  --drift-midnight:   #0D0D12;
+  --drift-deep-navy:  #0C1B2E;
+  --drift-linen:      #FAF8F4;
+  --drift-warm-white: #FFFFFF;
+  --drift-charcoal:   #1A1A1A;
+  --drift-mid-gray:   #4A4A4A;
+  --drift-mha-green:  #1D8A4C;
+  --drift-sale-red:   #D93025;
+  --drift-card-dark:  #1C1C24;
+  --drift-border:     rgba(255, 255, 255, 0.08);
+  --drift-off-white:  #E8E6E0;
+
+  /* Typography Scale */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-serif: Georgia, 'Times New Roman', Times, serif;
+
+  /* Spacing */
+  --section-padding-desktop: 96px 48px;
+  --section-padding-mobile:  64px 24px;
+  --container-max:           1200px;
+
+  /* Transitions */
+  --transition-standard: 0.3s ease;
+  --transition-slow:     0.6s ease;
+
+  /* Border Radius */
+  --radius-pill:  100px;
+  --radius-card:  16px;
+  --radius-btn:   8px;
+}
+
+/* ============================================================
+   RESET / UTILITY
+   ============================================================ */
+.drift-lp *,
+.drift-lp *::before,
+.drift-lp *::after {
+  box-sizing: border-box;
+}
+
+.drift-lp {
+  font-family: var(--font-sans);
+  color: var(--drift-charcoal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.drift-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  width: 100%;
+}
+
+.drift-eyebrow {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--drift-mha-green);
+  margin: 0 0 16px;
+  display: block;
+}
+
+.drift-eyebrow--light {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ============================================================
+   SECTION 1: HERO
+   ============================================================ */
+.drift-hero {
+  background-color: var(--drift-midnight);
+  min-height: 100vh;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* MHA Badge ribbon at top */
+.drift-hero__badge-bar {
+  width: 100%;
+  background: rgba(29, 138, 76, 0.15);
+  border-bottom: 1px solid rgba(29, 138, 76, 0.3);
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.drift-hero__badge-text {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--drift-mha-green);
+  letter-spacing: 0.04em;
+}
+
+/* Main hero content */
+.drift-hero__inner {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 80px 48px 80px;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  width: 100%;
+  gap: 48px;
+}
+
+.drift-hero__copy {
+  z-index: 2;
+  position: relative;
+}
+
+.drift-hero__headline {
+  font-size: clamp(42px, 6vw, 72px);
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.05;
+  margin: 0 0 24px;
+  letter-spacing: -0.02em;
+}
+
+.drift-hero__subhead {
+  font-size: clamp(17px, 1.8vw, 20px);
+  color: var(--drift-off-white);
+  line-height: 1.6;
+  margin: 0 0 16px;
+  max-width: 520px;
+  font-weight: 400;
+}
+
+.drift-hero__body {
+  font-size: 15px;
+  color: rgba(232, 230, 224, 0.7);
+  margin: 0 0 40px;
+  letter-spacing: 0.02em;
+}
+
+.drift-hero__ctas {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Hero product image side */
+.drift-hero__product {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+}
+
+.drift-hero__product-img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+  border-radius: 12px;
+}
+
+/* RGBIC glow animation behind product */
+.drift-hero__glow {
+  position: absolute;
+  inset: -20%;
+  border-radius: 50%;
+  z-index: 1;
+  animation: driftGlowCycle 30s ease-in-out infinite;
+  filter: blur(80px);
+  opacity: 0.45;
+}
+
+@keyframes driftGlowCycle {
+  0%   { background: radial-gradient(ellipse at center, #4B2DDB 0%, #1D8A4C 40%, transparent 70%); }
+  16%  { background: radial-gradient(ellipse at center, #DB2D8E 0%, #4B2DDB 40%, transparent 70%); }
+  33%  { background: radial-gradient(ellipse at center, #DB8C2D 0%, #DB2D8E 40%, transparent 70%); }
+  50%  { background: radial-gradient(ellipse at center, #2DB8DB 0%, #DB8C2D 40%, transparent 70%); }
+  66%  { background: radial-gradient(ellipse at center, #1D8A4C 0%, #2DB8DB 40%, transparent 70%); }
+  83%  { background: radial-gradient(ellipse at center, #4B2DDB 0%, #1D8A4C 40%, transparent 70%); }
+  100% { background: radial-gradient(ellipse at center, #4B2DDB 0%, #1D8A4C 40%, transparent 70%); }
+}
+
+/* Fallback placeholder when no hero image is set */
+.drift-hero__product-placeholder {
+  width: 100%;
+  aspect-ratio: 3/4;
+  max-width: 420px;
+  background: var(--drift-card-dark);
+  border-radius: 16px;
+  border: 1px dashed rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.3);
+  font-size: 14px;
+  text-align: center;
+  padding: 24px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ============================================================
+   BUTTONS — shared across all sections
+   ============================================================ */
+.drift-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 32px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  border-radius: var(--radius-btn);
+  min-height: 48px;
+  cursor: pointer;
+  transition: all var(--transition-standard);
+  border: 2px solid transparent;
+  white-space: nowrap;
+}
+
+.drift-btn--primary {
+  background: #FFFFFF;
+  color: var(--drift-midnight);
+  border-color: #FFFFFF;
+}
+
+.drift-btn--primary:hover {
+  background: var(--drift-off-white);
+  border-color: var(--drift-off-white);
+  transform: translateY(-1px);
+}
+
+.drift-btn--secondary {
+  background: transparent;
+  color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.drift-btn--secondary:hover {
+  border-color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.drift-btn--dark {
+  background: var(--drift-midnight);
+  color: #FFFFFF;
+  border-color: var(--drift-midnight);
+}
+
+.drift-btn--dark:hover {
+  background: var(--drift-deep-navy);
+  border-color: var(--drift-deep-navy);
+  transform: translateY(-1px);
+}
+
+.drift-btn--full {
+  width: 100%;
+}
+
+/* ============================================================
+   SECTION 2: INSIGHT / EMOTIONAL HOOK
+   ============================================================ */
+.drift-insight {
+  background: var(--drift-linen);
+  padding: var(--section-padding-desktop);
+  text-align: center;
+}
+
+.drift-insight__inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.drift-insight__quote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(28px, 4vw, 48px);
+  line-height: 1.35;
+  color: var(--drift-charcoal);
+  margin: 0 0 48px;
+  quotes: "\201C" "\201D";
+}
+
+.drift-insight__quote::before {
+  content: open-quote;
+}
+
+.drift-insight__quote::after {
+  content: close-quote;
+}
+
+.drift-insight__body {
+  font-size: 18px;
+  line-height: 1.75;
+  color: var(--drift-mid-gray);
+  margin: 0;
+  text-align: left;
+}
+
+.drift-insight__body p {
+  margin: 0 0 20px;
+}
+
+.drift-insight__body p:last-child {
+  margin: 0;
+}
+
+/* ============================================================
+   SECTION 3: PRODUCT GRID
+   ============================================================ */
+.drift-products {
+  background: var(--drift-linen);
+  padding: var(--section-padding-desktop);
+  border-top: 1px solid rgba(26, 26, 26, 0.08);
+}
+
+.drift-products__header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.drift-products__headline {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700;
+  color: var(--drift-charcoal);
+  margin: 0 0 16px;
+  letter-spacing: -0.02em;
+}
+
+.drift-products__subhead {
+  font-size: 18px;
+  color: var(--drift-mid-gray);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.drift-products__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.drift-product-card {
+  background: var(--drift-warm-white);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(26, 26, 26, 0.08);
+  transition: transform var(--transition-standard), box-shadow var(--transition-standard);
+}
+
+.drift-product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+}
+
+.drift-product-card:hover .drift-product-card__img {
+  filter: brightness(1.05);
+}
+
+.drift-product-card__img-wrap {
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background: #F0EDEA;
+}
+
+.drift-product-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: filter var(--transition-standard);
+}
+
+.drift-product-card__img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--drift-mid-gray);
+  font-size: 13px;
+}
+
+.drift-product-card__tag {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.drift-product-card__tag--popular {
+  background: var(--drift-mha-green);
+  color: #FFFFFF;
+}
+
+.drift-product-card__tag--sale {
+  background: var(--drift-sale-red);
+  color: #FFFFFF;
+}
+
+.drift-product-card__body {
+  padding: 28px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.drift-product-card__name {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--drift-mid-gray);
+  margin: 0 0 8px;
+}
+
+.drift-product-card__headline {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--drift-charcoal);
+  margin: 0 0 16px;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.drift-product-card__desc {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--drift-mid-gray);
+  margin: 0 0 24px;
+  flex: 1;
+}
+
+.drift-product-card__features {
+  list-style: none;
+  margin: 0 0 24px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.drift-product-card__feature {
+  font-size: 13px;
+  color: var(--drift-charcoal);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.drift-product-card__feature::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--drift-mha-green);
+  flex-shrink: 0;
+}
+
+.drift-product-card__pricing {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.drift-product-card__price {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--drift-charcoal);
+}
+
+.drift-product-card__price--sale {
+  color: var(--drift-sale-red);
+}
+
+.drift-product-card__price-compare {
+  font-size: 16px;
+  color: var(--drift-mid-gray);
+  text-decoration: line-through;
+}
+
+/* ============================================================
+   SECTION 4: DOCTOR ENDORSEMENTS
+   ============================================================ */
+.drift-endorsements {
+  background: var(--drift-midnight);
+  padding: var(--section-padding-desktop);
+}
+
+.drift-endorsements__header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.drift-endorsements__headline {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0 0 16px;
+  letter-spacing: -0.01em;
+}
+
+.drift-endorsements__subhead {
+  font-size: 17px;
+  color: var(--drift-off-white);
+  margin: 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+.drift-endorsements__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 64px;
+}
+
+.drift-quote-card {
+  background: var(--drift-card-dark);
+  border: 1px solid var(--drift-border);
+  border-radius: var(--radius-card);
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.drift-quote-card__quote {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--drift-off-white);
+  margin: 0;
+  font-style: italic;
+  opacity: 0.9;
+}
+
+.drift-quote-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: auto;
+}
+
+.drift-quote-card__name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.drift-quote-card__credential {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--drift-mha-green);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* Press bar */
+.drift-endorsements__press {
+  border-top: 1px solid var(--drift-border);
+  padding-top: 48px;
+  text-align: center;
+}
+
+.drift-endorsements__press-label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0 0 32px;
+}
+
+.drift-endorsements__press-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+
+.drift-endorsements__press-logo {
+  height: 24px;
+  width: auto;
+  opacity: 0.45;
+  filter: brightness(10);
+  transition: opacity var(--transition-standard);
+}
+
+.drift-endorsements__press-logo:hover {
+  opacity: 0.7;
+}
+
+.drift-endorsements__press-logo-placeholder {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   SECTION 5: APP EXPERIENCE
+   ============================================================ */
+.drift-app {
+  background: var(--drift-deep-navy);
+  padding: var(--section-padding-desktop);
+  overflow: hidden;
+}
+
+.drift-app__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.drift-app__mockup {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.drift-app__glow-bg {
+  position: absolute;
+  inset: -30%;
+  border-radius: 50%;
+  animation: driftGlowCycle 20s ease-in-out infinite;
+  filter: blur(60px);
+  opacity: 0.3;
+  z-index: 0;
+}
+
+.drift-app__phone {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  position: relative;
+  z-index: 1;
+  border-radius: 32px;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+}
+
+.drift-app__phone-placeholder {
+  width: 280px;
+  aspect-ratio: 9/18;
+  background: var(--drift-card-dark);
+  border-radius: 32px;
+  border: 1px dashed rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.3);
+  font-size: 13px;
+  text-align: center;
+  padding: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.drift-app__copy {
+  color: #FFFFFF;
+}
+
+.drift-app__headline {
+  font-size: clamp(30px, 3.5vw, 44px);
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0 0 24px;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.drift-app__body {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--drift-off-white);
+  margin: 0 0 36px;
+  opacity: 0.85;
+}
+
+.drift-app__features {
+  list-style: none;
+  margin: 0 0 40px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.drift-app__feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 16px;
+  color: var(--drift-off-white);
+  line-height: 1.5;
+}
+
+.drift-app__feature-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--drift-mha-green);
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+
+.drift-app__ctas {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ============================================================
+   SECTION 6: GIFTING (Mother's Day)
+   ============================================================ */
+.drift-gifting {
+  background: var(--drift-linen);
+  padding: var(--section-padding-desktop);
+  position: relative;
+  overflow: hidden;
+}
+
+.drift-gifting__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.drift-gifting__img-wrap {
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 5/6;
+  background: #EDE8E3;
+}
+
+.drift-gifting__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.drift-gifting__img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--drift-mid-gray);
+  font-size: 13px;
+  text-align: center;
+  padding: 24px;
+}
+
+.drift-gifting__copy {
+  /* intentionally unstyled — inherits from .drift-lp */
+}
+
+.drift-gifting__headline {
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 700;
+  color: var(--drift-charcoal);
+  margin: 0 0 20px;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.drift-gifting__subhead {
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--drift-mid-gray);
+  margin: 0 0 40px;
+}
+
+.drift-gifting__items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.drift-gifting__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: #FFFFFF;
+  border-radius: 12px;
+  border: 1px solid rgba(26,26,26,0.08);
+}
+
+.drift-gifting__item-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--drift-charcoal);
+}
+
+.drift-gifting__item-desc {
+  font-size: 13px;
+  color: var(--drift-mid-gray);
+  margin-top: 2px;
+}
+
+.drift-gifting__item-badge {
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.drift-gifting__item-badge--price {
+  background: rgba(26,26,26,0.07);
+  color: var(--drift-charcoal);
+}
+
+.drift-gifting__item-badge--sale {
+  background: var(--drift-sale-red);
+  color: #FFFFFF;
+}
+
+/* ============================================================
+   SECTION 7: FINAL CTA
+   ============================================================ */
+.drift-final-cta {
+  background: var(--drift-midnight);
+  padding: var(--section-padding-desktop);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.drift-final-cta__glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  animation: driftGlowCycle 25s ease-in-out infinite;
+  filter: blur(100px);
+  opacity: 0.2;
+  z-index: 0;
+}
+
+.drift-final-cta__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.drift-final-cta__headline {
+  font-size: clamp(34px, 5vw, 60px);
+  font-weight: 800;
+  color: #FFFFFF;
+  margin: 0 0 24px;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+}
+
+.drift-final-cta__body {
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--drift-off-white);
+  margin: 0 0 48px;
+  opacity: 0.85;
+}
+
+.drift-final-cta__ctas {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ============================================================
+   RESPONSIVE — MOBILE FIRST
+   ============================================================ */
+@media (max-width: 768px) {
+
+  /* Hero */
+  .drift-hero__inner {
+    grid-template-columns: 1fr;
+    padding: 40px 24px 56px;
+    gap: 40px;
+  }
+
+  .drift-hero__product {
+    order: 2;
+    min-height: 280px;
+  }
+
+  .drift-hero__copy {
+    order: 1;
+  }
+
+  .drift-hero__ctas {
+    flex-direction: column;
+  }
+
+  .drift-hero__ctas .drift-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Insight */
+  .drift-insight {
+    padding: var(--section-padding-mobile);
+  }
+
+  /* Products */
+  .drift-products {
+    padding: var(--section-padding-mobile);
+  }
+
+  .drift-products__header {
+    margin-bottom: 40px;
+  }
+
+  .drift-products__grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .drift-product-card__body {
+    padding: 20px;
+  }
+
+  /* Endorsements */
+  .drift-endorsements {
+    padding: var(--section-padding-mobile);
+  }
+
+  .drift-endorsements__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .drift-endorsements__press-logos {
+    gap: 28px;
+  }
+
+  /* App */
+  .drift-app {
+    padding: var(--section-padding-mobile);
+  }
+
+  .drift-app__inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .drift-app__ctas {
+    flex-direction: column;
+  }
+
+  .drift-app__ctas .drift-btn {
+    width: 100%;
+  }
+
+  /* Gifting */
+  .drift-gifting {
+    padding: var(--section-padding-mobile);
+  }
+
+  .drift-gifting__inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .drift-gifting__img-wrap {
+    aspect-ratio: 16/9;
+    order: -1;
+  }
+
+  /* Final CTA */
+  .drift-final-cta {
+    padding: var(--section-padding-mobile);
+  }
+
+  .drift-final-cta__ctas {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .drift-final-cta__ctas .drift-btn {
+    width: 100%;
+    max-width: 360px;
+  }
+}
+
+@media (max-width: 480px) {
+  .drift-hero__badge-bar {
+    padding: 10px 16px;
+  }
+
+  .drift-quote-card {
+    padding: 24px;
+  }
+
+  .drift-app__phone-placeholder {
+    width: 220px;
+  }
+}
+
+/* ============================================================
+   PRINT — hide decorative elements
+   ============================================================ */
+@media print {
+  .drift-hero__glow,
+  .drift-app__glow-bg,
+  .drift-final-cta__glow {
+    display: none;
+  }
+}

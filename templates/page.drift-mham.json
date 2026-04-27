@@ -1,0 +1,156 @@
+{
+  "sections": {
+    "drift_hero": {
+      "type": "drift-hero",
+      "settings": {
+        "badge_enabled": true,
+        "badge_text": "Honoring Mental Health Awareness Month — May 2026",
+        "eyebrow": "Mental Health Awareness Month 2026",
+        "headline": "Your good day starts here.",
+        "subheadline": "Drift is the app-controlled ambient light clinically recognized for reducing stress, deepening calm, and turning any room into a place your mind can rest.",
+        "body_text": "Doctor-recommended. App-controlled. Yours.",
+        "cta_primary_text": "Shop Drift",
+        "cta_primary_url": "/pages/drift",
+        "cta_secondary_text": "Find Your Size",
+        "cta_secondary_url": "#drift-products"
+      }
+    },
+    "drift_insight": {
+      "type": "drift-insight",
+      "settings": {
+        "eyebrow": "Mental Health Awareness Month 2026",
+        "pull_quote": "A good day isn't always big. Sometimes it's five quiet minutes watching patterns move — and finally, your mind goes still.",
+        "body_paragraph_1": "Mental Health America's 2026 theme asks a simple question: What does a good day look like for you?",
+        "body_paragraph_2": "For millions of people, the answer starts at home. With a ritual. With a moment of intentional calm.",
+        "body_paragraph_3": "Drift was built for exactly that."
+      }
+    },
+    "drift_product_grid": {
+      "type": "drift-product-grid",
+      "settings": {
+        "headline": "Three sizes. One purpose.",
+        "subhead": "Find the drift that fits your space — and your day.",
+        "product_1_handle": "drift-10-premium-wood",
+        "product_1_name": "Drift 10\" Premium Wood",
+        "product_1_tag": "Most Popular",
+        "product_1_headline": "Where calm begins.",
+        "product_1_desc": "The drift 10\" is your daily ritual — compact enough for a bedside table or desk, powerful enough to shift your entire headspace. WiFi-enabled so you're always in control, even from another room. RGBIC Smart Lights mean no two moments look the same.",
+        "product_1_feature_1": "WiFi-enabled",
+        "product_1_feature_2": "RGBIC Smart Lights",
+        "product_1_feature_3": "FSC-certified premium wood",
+        "product_1_feature_4": "Full app control",
+        "product_1_price": "$299.99",
+        "product_1_cta": "Shop Drift 10\"",
+        "product_1_url": "/products/drift-10-premium-wood",
+        "product_2_handle": "drift-16",
+        "product_2_name": "Drift 16\"",
+        "product_2_tag": "On Sale — Best for Shared Spaces",
+        "product_2_headline": "Good days are better shared.",
+        "product_2_desc": "The drift 16\" was made for living rooms, shared bedrooms, and the spaces where life happens together. Bigger canvas, bigger calm. Bluetooth-enabled with full RGB lighting for any mood, any moment.",
+        "product_2_feature_1": "Bluetooth enabled",
+        "product_2_feature_2": "RGB lights",
+        "product_2_feature_3": "App controlled",
+        "product_2_feature_4": "Ideal for living rooms",
+        "product_2_price": "On Sale",
+        "product_2_compare_price": "$399.99",
+        "product_2_cta": "Shop Drift 16\"",
+        "product_2_url": "/products/drift-16",
+        "product_3_handle": "drift-21",
+        "product_3_name": "Drift 21\"",
+        "product_3_tag": "On Sale — The Statement Piece",
+        "product_3_headline": "Make space for calm.",
+        "product_3_desc": "When you want to transform a room — not just light it — drift 21\" is your answer. The largest canvas in the drift family, delivering immersive RGB ambiance that anchors any space in calm.",
+        "product_3_feature_1": "Bluetooth enabled",
+        "product_3_feature_2": "RGB lights",
+        "product_3_feature_3": "App controlled",
+        "product_3_feature_4": "Perfect for gifting",
+        "product_3_price": "On Sale",
+        "product_3_compare_price": "$499.99",
+        "product_3_cta": "Shop Drift 21\"",
+        "product_3_url": "/products/drift-21"
+      }
+    },
+    "drift_endorsements": {
+      "type": "drift-endorsements",
+      "settings": {
+        "eyebrow": "Expert Voices",
+        "headline": "What the experts say.",
+        "subhead": "Drift is doctor-recommended for stress relief, mindfulness, and sleep — not just a beautiful object.",
+        "quote_1_text": "⚠️ [INSERT APPROVED QUOTE — Dr. Schwartz — re: stress relief / mindfulness. Pull verbatim from Homedics asset library before publishing.]",
+        "quote_1_name": "Dr. [Schwartz — First Name TBD]",
+        "quote_1_credential": "[Credential — e.g. MD, Clinical Psychologist, Board-Certified]",
+        "quote_2_text": "⚠️ [INSERT APPROVED QUOTE — Dr. Rosenstock — re: sleep / ambient light. Pull verbatim from Homedics asset library before publishing.]",
+        "quote_2_name": "Dr. [Rosenstock — First Name TBD]",
+        "quote_2_credential": "[Credential — e.g. Sleep Medicine Specialist, MD]",
+        "quote_3_text": "⚠️ [INSERT APPROVED QUOTE — Dr. Gonzalez — re: anxiety reduction. Pull verbatim from Homedics asset library before publishing.]",
+        "quote_3_name": "Dr. [Gonzalez — First Name TBD]",
+        "quote_3_credential": "[Credential — e.g. Licensed Therapist, Anxiety Specialist]",
+        "quote_4_text": "⚠️ [INSERT APPROVED QUOTE — Dr. Nieves — re: mindfulness ritual. Pull verbatim from Homedics asset library before publishing.]",
+        "quote_4_name": "Dr. [Nieves — First Name TBD]",
+        "quote_4_credential": "[Credential — e.g. Mindfulness Coach, PsyD]",
+        "press_bar_enabled": true,
+        "press_label": "As seen in",
+        "press_label_1": "[Publication Name]",
+        "press_label_2": "[Publication Name]",
+        "press_label_3": "[Publication Name]",
+        "press_label_4": "[Publication Name]"
+      }
+    },
+    "drift_app": {
+      "type": "drift-app-experience",
+      "settings": {
+        "eyebrow": "The Homedics Drift App",
+        "headline": "Your calm. Your control.",
+        "body": "drift connects to the Homedics Drift app — giving you complete control over color, brightness, motion speed, and pre-set moods. Schedule your evening wind-down. Wake up to a soft sunrise. Your good day, programmed the night before.",
+        "feature_1": "Millions of color combinations — set the exact mood you need",
+        "feature_2": "Schedule lighting modes — sunrise wake-up, evening wind-down",
+        "feature_3": "WiFi control (Drift 10\") — adjust from anywhere in your home",
+        "cta_primary_text": "Shop Drift",
+        "cta_primary_url": "/pages/drift",
+        "cta_secondary_text": "Download the App",
+        "cta_secondary_url": ""
+      }
+    },
+    "drift_gifting": {
+      "type": "drift-gifting",
+      "settings": {
+        "force_hide": false,
+        "eyebrow": "Mother's Day — May 11, 2026",
+        "headline": "Give her more good days.",
+        "subhead": "Mother's Day is May 11. Drift is the gift that keeps giving — every evening, every morning, every quiet moment she finally gets to herself.",
+        "item_1_name": "Drift 10\" Premium Wood",
+        "item_1_desc": "The perfect first gift",
+        "item_1_badge": "$299.99",
+        "item_2_name": "Drift 16\"",
+        "item_2_desc": "For the home she loves",
+        "item_2_badge": "On Sale",
+        "item_3_name": "Drift 21\"",
+        "item_3_desc": "For the mom who deserves the room",
+        "item_3_badge": "On Sale",
+        "cta_text": "Shop Mother's Day Gifts",
+        "cta_url": "/pages/drift"
+      }
+    },
+    "drift_final_cta": {
+      "type": "drift-final-cta",
+      "settings": {
+        "eyebrow": "Mental Health Awareness Month 2026",
+        "headline": "Your good day is waiting.",
+        "body": "Start with five minutes. A room that feels different. A light that moves with you. Drift was built for the small moments that change everything.",
+        "cta_primary_text": "Shop Drift",
+        "cta_primary_url": "/pages/drift",
+        "cta_secondary_text": "Find Your Size",
+        "cta_secondary_url": "#drift-products"
+      }
+    }
+  },
+  "order": [
+    "drift_hero",
+    "drift_insight",
+    "drift_product_grid",
+    "drift_endorsements",
+    "drift_app",
+    "drift_gifting",
+    "drift_final_cta"
+  ]
+}

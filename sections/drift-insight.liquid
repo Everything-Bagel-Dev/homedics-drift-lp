@@ -1,0 +1,76 @@
+{% comment %}
+  drift-insight.liquid
+  Section 2 — The Insight / Emotional Hook
+  Homedics Drift × Mental Health Awareness Month 2026
+
+  Includes:
+  - Eyebrow label
+  - Large serif italic pull quote
+  - 3-paragraph body copy connecting MHA theme to Drift
+  - Warm linen background — no product imagery, let the words breathe
+{% endcomment %}
+
+{{ 'drift-mham.css' | asset_url | stylesheet_tag }}
+
+<section class="drift-lp drift-insight" id="drift-insight">
+  <div class="drift-insight__inner drift-container">
+
+    <span class="drift-eyebrow">{{ section.settings.eyebrow }}</span>
+
+    <blockquote class="drift-insight__quote">
+      {{ section.settings.pull_quote }}
+    </blockquote>
+
+    <div class="drift-insight__body">
+      <p>{{ section.settings.body_paragraph_1 }}</p>
+      <p>{{ section.settings.body_paragraph_2 }}</p>
+      <p>{{ section.settings.body_paragraph_3 }}</p>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Drift — Insight",
+  "tag": "section",
+  "class": "shopify-section--drift-insight",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow label",
+      "default": "Mental Health Awareness Month 2026"
+    },
+    {
+      "type": "textarea",
+      "id": "pull_quote",
+      "label": "Pull quote (serif italic display)",
+      "default": "A good day isn't always big. Sometimes it's five quiet minutes watching patterns move — and finally, your mind goes still."
+    },
+    {
+      "type": "textarea",
+      "id": "body_paragraph_1",
+      "label": "Body paragraph 1",
+      "default": "Mental Health America's 2026 theme asks a simple question: What does a good day look like for you?"
+    },
+    {
+      "type": "textarea",
+      "id": "body_paragraph_2",
+      "label": "Body paragraph 2",
+      "default": "For millions of people, the answer starts at home. With a ritual. With a moment of intentional calm."
+    },
+    {
+      "type": "textarea",
+      "id": "body_paragraph_3",
+      "label": "Body paragraph 3",
+      "default": "Drift was built for exactly that."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Drift — Insight"
+    }
+  ]
+}
+{% endschema %}

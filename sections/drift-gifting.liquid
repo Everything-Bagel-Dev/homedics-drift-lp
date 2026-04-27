@@ -1,0 +1,260 @@
+{% comment %}
+  drift-gifting.liquid
+  Section 6 — Mother's Day Gifting
+  Homedics Drift × Mental Health Awareness Month 2026
+
+  VISIBILITY RULE:
+  - Active: May 1–11, 2026
+  - Hidden: May 12, 2026 and after
+  - Implementation: Liquid date comparison using "now" object
+  - Editors can also force-hide/show via section settings toggle
+
+  Layout: Split — lifestyle image LEFT, gifting copy + item list RIGHT
+  Background: Warm linen / cream
+{% endcomment %}
+
+{{ 'drift-mham.css' | asset_url | stylesheet_tag }}
+
+{%- comment %}
+  Date-based visibility check.
+  "now" in Liquid is the current server time (UTC). The May 12 cutoff
+  is set at midnight UTC, which is conservative and appropriate for
+  a US-based campaign (safe to show while it's still May 11 US ET).
+  Editors can override with the force_hide setting for manual control.
+{%- endcomment %}
+
+{%- assign cutoff_date = '2026-05-12 00:00:00 +0000' | date: '%s' | plus: 0 %}
+{%- assign now_ts      = 'now' | date: '%s' | plus: 0 %}
+{%- assign is_expired  = false %}
+
+{%- if now_ts >= cutoff_date %}
+  {%- assign is_expired = true %}
+{%- endif %}
+
+{%- comment %} Respect manual force-hide from admin {%- endcomment %}
+{%- if section.settings.force_hide %}
+  {%- assign is_expired = true %}
+{%- endif %}
+
+{%- unless is_expired %}
+<section class="drift-lp drift-gifting" id="drift-gifting">
+  <div class="drift-gifting__inner drift-container">
+
+    {%- comment %} LEFT: Lifestyle image {%- endcomment %}
+    <div class="drift-gifting__img-wrap">
+      {%- if section.settings.gifting_image != blank %}
+        {{ section.settings.gifting_image
+          | image_url: width: 800
+          | image_tag:
+            class: 'drift-gifting__img',
+            alt: section.settings.gifting_image.alt | default: 'Woman enjoying Homedics Drift ambient light — Mother\'s Day gift',
+            loading: 'lazy',
+            width: 800
+        }}
+      {%- else %}
+        <div class="drift-gifting__img-placeholder">
+          [Lifestyle photo: Woman 38–48, natural light,<br>Drift 10" in bedroom or living room.<br>Warm, calm, not staged.]
+        </div>
+      {%- endif %}
+    </div>
+
+    {%- comment %} RIGHT: Copy block {%- endcomment %}
+    <div class="drift-gifting__copy">
+
+      <span class="drift-eyebrow">{{ section.settings.eyebrow }}</span>
+
+      <h2 class="drift-gifting__headline">{{ section.settings.headline }}</h2>
+
+      <p class="drift-gifting__subhead">{{ section.settings.subhead }}</p>
+
+      {%- comment %} Gift items list {%- endcomment %}
+      <div class="drift-gifting__items">
+
+        {%- comment %} Item 1: Drift 10" {%- endcomment %}
+        <div class="drift-gifting__item">
+          <div>
+            <div class="drift-gifting__item-name">{{ section.settings.item_1_name }}</div>
+            <div class="drift-gifting__item-desc">{{ section.settings.item_1_desc }}</div>
+          </div>
+          <span class="drift-gifting__item-badge drift-gifting__item-badge--price">
+            {{ section.settings.item_1_badge }}
+          </span>
+        </div>
+
+        {%- comment %} Item 2: Drift 16" {%- endcomment %}
+        <div class="drift-gifting__item">
+          <div>
+            <div class="drift-gifting__item-name">{{ section.settings.item_2_name }}</div>
+            <div class="drift-gifting__item-desc">{{ section.settings.item_2_desc }}</div>
+          </div>
+          <span class="drift-gifting__item-badge drift-gifting__item-badge--sale">
+            {{ section.settings.item_2_badge }}
+          </span>
+        </div>
+
+        {%- comment %} Item 3: Drift 21" {%- endcomment %}
+        <div class="drift-gifting__item">
+          <div>
+            <div class="drift-gifting__item-name">{{ section.settings.item_3_name }}</div>
+            <div class="drift-gifting__item-desc">{{ section.settings.item_3_desc }}</div>
+          </div>
+          <span class="drift-gifting__item-badge drift-gifting__item-badge--sale">
+            {{ section.settings.item_3_badge }}
+          </span>
+        </div>
+
+      </div>{%- comment %} /.drift-gifting__items {%- endcomment %}
+
+      <a
+        href="{{ section.settings.cta_url }}"
+        class="drift-btn drift-btn--dark drift-btn--full"
+        aria-label="{{ section.settings.cta_text }}"
+      >
+        {{ section.settings.cta_text }}
+      </a>
+
+    </div>
+
+  </div>
+</section>
+{%- endunless %}
+
+{% schema %}
+{
+  "name": "Drift — Gifting (Mother's Day)",
+  "tag": "section",
+  "class": "shopify-section--drift-gifting",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Visibility",
+      "info": "This section automatically hides after May 11, 2026 (UTC midnight May 12). Use force-hide below to manually disable early if needed."
+    },
+    {
+      "type": "checkbox",
+      "id": "force_hide",
+      "label": "Force hide (override date logic)",
+      "default": false,
+      "info": "Check this to manually hide the section regardless of date."
+    },
+    {
+      "type": "header",
+      "content": "Copy"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow label",
+      "default": "Mother's Day — May 11, 2026"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Section headline",
+      "default": "Give her more good days."
+    },
+    {
+      "type": "textarea",
+      "id": "subhead",
+      "label": "Section subhead",
+      "default": "Mother's Day is May 11. Drift is the gift that keeps giving — every evening, every morning, every quiet moment she finally gets to herself."
+    },
+    {
+      "type": "header",
+      "content": "Gift Item 1 — Drift 10\""
+    },
+    {
+      "type": "text",
+      "id": "item_1_name",
+      "label": "Item name",
+      "default": "Drift 10\" Premium Wood"
+    },
+    {
+      "type": "text",
+      "id": "item_1_desc",
+      "label": "Item description",
+      "default": "The perfect first gift"
+    },
+    {
+      "type": "text",
+      "id": "item_1_badge",
+      "label": "Badge text",
+      "default": "$299.99"
+    },
+    {
+      "type": "header",
+      "content": "Gift Item 2 — Drift 16\""
+    },
+    {
+      "type": "text",
+      "id": "item_2_name",
+      "label": "Item name",
+      "default": "Drift 16\""
+    },
+    {
+      "type": "text",
+      "id": "item_2_desc",
+      "label": "Item description",
+      "default": "For the home she loves"
+    },
+    {
+      "type": "text",
+      "id": "item_2_badge",
+      "label": "Badge text",
+      "default": "On Sale"
+    },
+    {
+      "type": "header",
+      "content": "Gift Item 3 — Drift 21\""
+    },
+    {
+      "type": "text",
+      "id": "item_3_name",
+      "label": "Item name",
+      "default": "Drift 21\""
+    },
+    {
+      "type": "text",
+      "id": "item_3_desc",
+      "label": "Item description",
+      "default": "For the mom who deserves the room"
+    },
+    {
+      "type": "text",
+      "id": "item_3_badge",
+      "label": "Badge text",
+      "default": "On Sale"
+    },
+    {
+      "type": "header",
+      "content": "CTA"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA button text",
+      "default": "Shop Mother's Day Gifts"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA URL"
+    },
+    {
+      "type": "header",
+      "content": "Lifestyle Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "gifting_image",
+      "label": "Lifestyle photo",
+      "info": "Woman 38–48, natural light, Drift in situ. Warm, calm. NOT pink-washed or overly staged."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Drift — Gifting (Mother's Day)"
+    }
+  ]
+}
+{% endschema %}

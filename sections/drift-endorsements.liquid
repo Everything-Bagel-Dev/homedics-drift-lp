@@ -1,0 +1,318 @@
+{% comment %}
+  drift-endorsements.liquid
+  Section 4 — Doctor Endorsements
+  Homedics Drift × Mental Health Awareness Month 2026
+
+  Includes:
+  - Dark background section header
+  - 2×2 quote card grid
+  - Press logo bar
+  - ⚠️ All doctor quotes are placeholder — INSERT APPROVED QUOTES from Homedics asset library.
+    Do NOT publish with placeholder text. Pull verbatim from Dr. Schwartz, Dr. Rosenstock,
+    Dr. Gonzalez, Dr. Nieves before going live.
+{% endcomment %}
+
+{{ 'drift-mham.css' | asset_url | stylesheet_tag }}
+
+<section class="drift-lp drift-endorsements" id="drift-endorsements">
+  <div class="drift-container">
+
+    <div class="drift-endorsements__header">
+      <span class="drift-eyebrow drift-eyebrow--light">{{ section.settings.eyebrow }}</span>
+      <h2 class="drift-endorsements__headline">{{ section.settings.headline }}</h2>
+      <p class="drift-endorsements__subhead">{{ section.settings.subhead }}</p>
+    </div>
+
+    {%- comment %} 2×2 Quote Card Grid {%- endcomment %}
+    <div class="drift-endorsements__grid">
+
+      {%- comment %} Card 1 {%- endcomment %}
+      <article class="drift-quote-card">
+        <blockquote class="drift-quote-card__quote">
+          {{ section.settings.quote_1_text }}
+        </blockquote>
+        <div class="drift-quote-card__meta">
+          <p class="drift-quote-card__name">{{ section.settings.quote_1_name }}</p>
+          <p class="drift-quote-card__credential">{{ section.settings.quote_1_credential }}</p>
+        </div>
+      </article>
+
+      {%- comment %} Card 2 {%- endcomment %}
+      <article class="drift-quote-card">
+        <blockquote class="drift-quote-card__quote">
+          {{ section.settings.quote_2_text }}
+        </blockquote>
+        <div class="drift-quote-card__meta">
+          <p class="drift-quote-card__name">{{ section.settings.quote_2_name }}</p>
+          <p class="drift-quote-card__credential">{{ section.settings.quote_2_credential }}</p>
+        </div>
+      </article>
+
+      {%- comment %} Card 3 {%- endcomment %}
+      <article class="drift-quote-card">
+        <blockquote class="drift-quote-card__quote">
+          {{ section.settings.quote_3_text }}
+        </blockquote>
+        <div class="drift-quote-card__meta">
+          <p class="drift-quote-card__name">{{ section.settings.quote_3_name }}</p>
+          <p class="drift-quote-card__credential">{{ section.settings.quote_3_credential }}</p>
+        </div>
+      </article>
+
+      {%- comment %} Card 4 {%- endcomment %}
+      <article class="drift-quote-card">
+        <blockquote class="drift-quote-card__quote">
+          {{ section.settings.quote_4_text }}
+        </blockquote>
+        <div class="drift-quote-card__meta">
+          <p class="drift-quote-card__name">{{ section.settings.quote_4_name }}</p>
+          <p class="drift-quote-card__credential">{{ section.settings.quote_4_credential }}</p>
+        </div>
+      </article>
+
+    </div>{%- comment %} /.drift-endorsements__grid {%- endcomment %}
+
+    {%- comment %} Press Bar {%- endcomment %}
+    {%- if section.settings.press_bar_enabled %}
+    <div class="drift-endorsements__press">
+      <p class="drift-endorsements__press-label">{{ section.settings.press_label }}</p>
+      <div class="drift-endorsements__press-logos">
+
+        {%- for i in (1..4) %}
+          {%- assign logo_key  = 'press_logo_'  | append: i %}
+          {%- assign alt_key   = 'press_alt_'   | append: i %}
+          {%- assign label_key = 'press_label_' | append: i %}
+          {%- assign logo      = section.settings[logo_key] %}
+          {%- assign alt       = section.settings[alt_key] %}
+          {%- assign label     = section.settings[label_key] %}
+
+          {%- if logo != blank %}
+            {{ logo
+              | image_url: width: 200
+              | image_tag:
+                class: 'drift-endorsements__press-logo',
+                alt: alt | default: label,
+                loading: 'lazy',
+                width: 200
+            }}
+          {%- elsif label != blank %}
+            <span class="drift-endorsements__press-logo-placeholder">{{ label }}</span>
+          {%- endif %}
+        {%- endfor %}
+
+      </div>
+    </div>
+    {%- endif %}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Drift — Endorsements",
+  "tag": "section",
+  "class": "shopify-section--drift-endorsements",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Header"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow label",
+      "default": "Expert Voices"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Section headline",
+      "default": "What the experts say."
+    },
+    {
+      "type": "textarea",
+      "id": "subhead",
+      "label": "Section subhead",
+      "default": "Drift is doctor-recommended for stress relief, mindfulness, and sleep — not just a beautiful object."
+    },
+    {
+      "type": "header",
+      "content": "⚠️ Quote 1 — Dr. Schwartz (Stress Relief / Mindfulness)",
+      "info": "INSERT VERBATIM APPROVED QUOTE from Homedics asset library. Do NOT fabricate."
+    },
+    {
+      "type": "textarea",
+      "id": "quote_1_text",
+      "label": "Quote text",
+      "default": "⚠️ [INSERT APPROVED QUOTE — Dr. Schwartz — re: stress relief / mindfulness. Pull verbatim from Homedics asset library before publishing.]"
+    },
+    {
+      "type": "text",
+      "id": "quote_1_name",
+      "label": "Doctor name",
+      "default": "Dr. [Schwartz — First Name TBD]"
+    },
+    {
+      "type": "text",
+      "id": "quote_1_credential",
+      "label": "Credential / title",
+      "default": "[Credential — e.g. MD, Clinical Psychologist, Board-Certified]"
+    },
+    {
+      "type": "header",
+      "content": "⚠️ Quote 2 — Dr. Rosenstock (Sleep / Ambient Light)",
+      "info": "INSERT VERBATIM APPROVED QUOTE from Homedics asset library. Do NOT fabricate."
+    },
+    {
+      "type": "textarea",
+      "id": "quote_2_text",
+      "label": "Quote text",
+      "default": "⚠️ [INSERT APPROVED QUOTE — Dr. Rosenstock — re: sleep / ambient light. Pull verbatim from Homedics asset library before publishing.]"
+    },
+    {
+      "type": "text",
+      "id": "quote_2_name",
+      "label": "Doctor name",
+      "default": "Dr. [Rosenstock — First Name TBD]"
+    },
+    {
+      "type": "text",
+      "id": "quote_2_credential",
+      "label": "Credential / title",
+      "default": "[Credential — e.g. Sleep Medicine Specialist, MD]"
+    },
+    {
+      "type": "header",
+      "content": "⚠️ Quote 3 — Dr. Gonzalez (Anxiety Reduction)",
+      "info": "INSERT VERBATIM APPROVED QUOTE from Homedics asset library. Do NOT fabricate."
+    },
+    {
+      "type": "textarea",
+      "id": "quote_3_text",
+      "label": "Quote text",
+      "default": "⚠️ [INSERT APPROVED QUOTE — Dr. Gonzalez — re: anxiety reduction. Pull verbatim from Homedics asset library before publishing.]"
+    },
+    {
+      "type": "text",
+      "id": "quote_3_name",
+      "label": "Doctor name",
+      "default": "Dr. [Gonzalez — First Name TBD]"
+    },
+    {
+      "type": "text",
+      "id": "quote_3_credential",
+      "label": "Credential / title",
+      "default": "[Credential — e.g. Licensed Therapist, Anxiety Specialist]"
+    },
+    {
+      "type": "header",
+      "content": "⚠️ Quote 4 — Dr. Nieves (Mindfulness Ritual)",
+      "info": "INSERT VERBATIM APPROVED QUOTE from Homedics asset library. Do NOT fabricate."
+    },
+    {
+      "type": "textarea",
+      "id": "quote_4_text",
+      "label": "Quote text",
+      "default": "⚠️ [INSERT APPROVED QUOTE — Dr. Nieves — re: mindfulness ritual. Pull verbatim from Homedics asset library before publishing.]"
+    },
+    {
+      "type": "text",
+      "id": "quote_4_name",
+      "label": "Doctor name",
+      "default": "Dr. [Nieves — First Name TBD]"
+    },
+    {
+      "type": "text",
+      "id": "quote_4_credential",
+      "label": "Credential / title",
+      "default": "[Credential — e.g. Mindfulness Coach, PsyD]"
+    },
+    {
+      "type": "header",
+      "content": "Press Bar"
+    },
+    {
+      "type": "checkbox",
+      "id": "press_bar_enabled",
+      "label": "Show press bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "press_label",
+      "label": "Press bar label",
+      "default": "As seen in"
+    },
+    {
+      "type": "image_picker",
+      "id": "press_logo_1",
+      "label": "Press logo 1",
+      "info": "Source from Homedics press kit. White/light version for dark bg."
+    },
+    {
+      "type": "text",
+      "id": "press_alt_1",
+      "label": "Press logo 1 alt text"
+    },
+    {
+      "type": "text",
+      "id": "press_label_1",
+      "label": "Press outlet 1 (text fallback if no logo)",
+      "default": "[Publication Name]"
+    },
+    {
+      "type": "image_picker",
+      "id": "press_logo_2",
+      "label": "Press logo 2"
+    },
+    {
+      "type": "text",
+      "id": "press_alt_2",
+      "label": "Press logo 2 alt text"
+    },
+    {
+      "type": "text",
+      "id": "press_label_2",
+      "label": "Press outlet 2 (text fallback)",
+      "default": "[Publication Name]"
+    },
+    {
+      "type": "image_picker",
+      "id": "press_logo_3",
+      "label": "Press logo 3"
+    },
+    {
+      "type": "text",
+      "id": "press_alt_3",
+      "label": "Press logo 3 alt text"
+    },
+    {
+      "type": "text",
+      "id": "press_label_3",
+      "label": "Press outlet 3 (text fallback)",
+      "default": "[Publication Name]"
+    },
+    {
+      "type": "image_picker",
+      "id": "press_logo_4",
+      "label": "Press logo 4"
+    },
+    {
+      "type": "text",
+      "id": "press_alt_4",
+      "label": "Press logo 4 alt text"
+    },
+    {
+      "type": "text",
+      "id": "press_label_4",
+      "label": "Press outlet 4 (text fallback)",
+      "default": "[Publication Name]"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Drift — Endorsements"
+    }
+  ]
+}
+{% endschema %}
